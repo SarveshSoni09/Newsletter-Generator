@@ -1,0 +1,47 @@
+*Faculty form (add all formatting options):*
+-Highlights of dept / Faculty achievements (section)
+	-Name of faculty (submitter or anyone else)
+	-Point wise text box
+	-Image upload (optional)
+
+-Remarkable Milestones (section)
+	-Long text box
+	-Image upload (optional)
+
+-Activity conducted for students / organised (section, list)
+	-Description box
+	-Image upload (multiple)
+	-Image caption (compulsory if image uploaded)
+	
+-Placement stats (section)
+	-Bar graph (image or numbers as input)
+		-X axis for name of companies etc.
+		-Y axis input for numbers
+		-Graph generator (output as image file)
+	-Graph caption
+	-Companies image 
+	
+-Student achievements (section, list)
+	-Text paragraph
+	-Image upload
+
+-Events attended by faculty (section, list)
+	-Text box 
+	-Image (optional)
+	
+-Projects by companies (section, list)
+	-Text box
+
+-PhD pursuing faculties (section, list)
+	-List of teacher names (can be created as radio button for individual faculty or list where names can be added)
+	
+
+
+*Admin Form (give access of faculty form):* 
+-Academic year, volume
+-Group pic 
+-Editorial Desk 
+-Option to create new heading
+	-Title
+	-List option for text
+	-Image after every text para

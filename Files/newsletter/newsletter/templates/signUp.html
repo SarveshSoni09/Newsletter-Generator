@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta content="width=device-width, initial-scale=1.0" name="viewport">
+        {% load static %}
+        
+        <title>KJSIEIT Newsletter Portal</title>
+        <meta content="" name="description">
+        <meta content="" name="keywords">
+
+        <!-- Favicons -->
+        <link href="{% static 'assets/img/slogo.png' %}" rel="icon">
+
+        <!-- Google Fonts -->
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Montserrat:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+        <!-- Vendor CSS Files -->
+        <link href="{% static 'assets/vendor/aos/aos.css' %}" rel="stylesheet">
+        <link href="{% static 'assets/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+        <link href="{% static 'assets/vendor/bootstrap-icons/bootstrap-icons.css' %}" rel="stylesheet">
+        <link href="{% static 'assets/vendor/boxicons/css/boxicons.min.css' %}" rel="stylesheet">
+        <link href="{% static 'assets/vendor/glightbox/css/glightbox.min.css' %}" rel="stylesheet">
+        <link href="{% static 'assets/vendor/swiper/swiper-bundle.min.css' %}" rel="stylesheet">
+
+        <!-- Template Main CSS File -->
+        <link href="{% static 'assets/css/style.css' %}" rel="stylesheet">
+
+        <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+    </head>
+
+    <body>
+
+        <!-- ======= Header ======= -->
+        <header id="header" class="d-flex align-items-center">
+            <div class="container d-flex align-items-center justify-content-between">
+                <div class="logo">
+                    <a href="https://kjsieit.somaiya.edu.in/en"><img src="{% static 'assets/kjsieit-logo.svg' %}" alt="" class="img-fluid"></a>
+                </div>
+            </div>
+        </header><!-- End Header -->
+
+        <main id="main">
+            <section id="contact" class="contact section-bg">
+                <div class="container">
+                    <div class="section-title" data-aos="fade-right">
+                        <h2>Sign Up</h2>
+                        <p>Sign up to the Newsletter Portal</p>
+                        {% for message in messages %}
+                            <p><font color="red">{{message}}</font></p>
+                        {% endfor %}
+                    </div>
+                    <div class="row">
+                        <div class="offset-lg-3 col-lg-6 mt-5 mt-lg-0">
+                            <form action="registration" method="post" role="form" class="php-email-form" data-aos="zoom-in" id="signUp">
+                                {% csrf_token %}
+                                <div class="row">
+                                    <div class="col-md-6 form-group">
+                                        <input type="text" name="fname" class="form-control box" id="form_fname" placeholder="First Name" required>
+                                        <span class="error_form" id="fname_error_message"></span>
+                                    </div>
+                                    <div class="col-md-6 form-group mt-3 mt-md-0">
+                                        <input type="text" name="lname" class="form-control box" id="form_lname" placeholder="Last Name" required>
+                                        <span class="error_form" id="lname_error_message"></span>
+                                    </div>                                 
+                                </div>
+                                <div class="form-group mt-3">
+                                    <input type="email" class="form-control box" name="email" id="form_email" placeholder="Email Address" required>
+                                    <span class="error_form" id="email_error_message"></span>
+                                </div>
+                                <div class="form-group mt-3">
+                                    <input class="form-control box" id="form_pwd" name="pwd" rows="5" placeholder="Password" type="password" required></input>
+                                    <span class="error_form" id="pwd_error_message"></span>
+                                </div>
+                                <div class="form-group mt-3">
+                                    <input class="form-control box" id="form_con_pwd" name="conpwd" rows="5" placeholder="Confirm Password"  type="password" required></input>
+                                    <span class="error_form" id="conpwd_error_message"></span>
+                                </div>
+                                
+                                <div class="form-group mt-3">
+                                    <select class="dropdown form-control box" name="dept" id="department" for="department">
+                                        <option>Department</option>
+                                        <option value="Computer">Computer</option>
+                                        <option value="Information Technology">Information Technology</option>
+                                        <option value="extc">Electronics and Telecommunication</option>
+                                        <option value="etrx">Electronics</option>
+                                        <option value="aids">Artificial Intelligence & Data Science</option>
+                                    </select>
+                                </div>
+                                <div class="text-center"><button type="submit" name="btn">Sign up</button></div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </section><!-- End Contact Section -->
+        </main><!-- End #main -->
+
+        <!-- ======= Footer ======= -->
+        <footer id="footer">
+            <div class="container footer-bottom clearfix">
+                <div class="copyright">
+                    <strong><span>Developed by students of KJSIEIT</span></strong>
+                </div>
+            </div>
+        </footer><!-- End Footer -->
+
+        <!-- Vendor JS Files -->
+        <script src="{% static 'assets/vendor/aos/aos.js' %}"></script>
+        <script src="{% static 'assets/vendor/Ajax/jquery.min.js' %}"></script>
+        <script src="{% static 'assets/vendor/jQueryValidation/jquery.validate.js' %}"></script>
+        <script src="{% static 'assets/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+        <script src="{% static 'assets/vendor/glightbox/js/glightbox.min.js' %}"></script>
+        <script src="{% static 'assets/vendor/isotope-layout/isotope.pkgd.min.js' %}"></script>
+        <script src="{% static 'assets/vendor/php-email-form/validate.js' %}"></script>
+        <script src="{% static 'assets/vendor/swiper/swiper-bundle.min.js' %}"></script>
+
+        <script>
+            $(function(){
+                $("#fname_error_message").hide();
+                $("#lname_error_message").hide();
+                $("#email_error_message").hide();
+                $("#pwd_error_message").hide();
+                $("#conpwd_error_message").hide();
+
+                var error_fname = false;
+                var error_lname = false;
+                var error_email = false;
+                var error_pwd = false;
+                var error_conpwd = false;
+
+                $("form_fname").focusout(function(){
+                    check_fname();
+                });
+
+                $("form_lname").focusout(function(){
+                    check_lname();
+                });
+
+                $("form_email").focusout(function(){
+                    check_email();
+                });
+
+                $("form_pwd").focusout(function(){
+                    check_pwd();
+                });
+
+                $("form_conpwd").focusout(function(){
+                    check_con_pwd();
+                });
+
+                function check_fname(){
+                    var pattern = /^[a-zA-Z]*$/;
+                    var fname = $("#form_fname").val();
+                    if (pattern.test(fname) && fname !== ''){
+                        $("#fname_error_message").hide();
+                    }
+                    else{
+                        $("fname_error_message").html("Should contain only alphabets");
+                        $("#fname_error_message").show();
+                        $("#form_fname").css("border", "2px solid #F90A0A");
+                        error_fname = true;
+                    }
+                }
+
+                function check_lname(){
+                    var pattern = /^[a-zA-Z]*$/;
+                    var lname = $("#form_lname").val();
+                    if (pattern.test(lname) && lname !== ''){
+                        $("#lname_error_message").hide();
+                    }
+                    else{
+                        $("lname_error_message").html("Should contain only alphabets");
+                        $("#lname_error_message").show();
+                        $("#form_lname").css("border", "2px solid #F90A0A");
+                        error_lname = true;
+                    }
+                }
+
+                function check_pwd(){
+                    var pwd_length = $("#form_pwd").val().length;
+                    if (pwd_length < 8){
+                        $("#pwd_error_message").html("Atleast 8 characters");
+                        $("#pwd_error_message").show();
+                        $("#form_pwd").css("border","2px solid #F90A0A");
+                        error_pwd = true;
+                    }
+                    else{
+                        $("#pwd_error_message").hide();
+                    }
+                }
+
+                function check_con_pwd(){
+                    var pwd_length = $("#form_pwd").val().length;
+                    var conpwd_length = $("#form_con_pwd").val().length;
+                    if (pwd_length !== conpwd_length){
+                        $("#conpwd_error_message").html("Passwords do not match");
+                        $("#conpwd_error_message").show();
+                        $("#form_con_pwd").html("border", "2px solid #f90a0a");
+                        error_conpwd = true;
+                    }
+
+                    else{
+                        $("conpwd_error_message").hide();
+                    }
+                }
+
+                function check_email(){
+                    var pattern = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
+                    var email = $("#form_email").val();
+                    if (pattern.test(email) && email !== ''){
+                        $("#email_error_message").hide();
+                    }
+
+                    else {
+                        $("#email_error_message").html("Invalid email");
+                        $("#email_error_message").show();
+                        $("#form_email").html("border","2px solid #F90A0A");
+                        error_email = true;
+                    }
+                }
+
+                $("#signUp").submit(function() {
+                    error_fname = false;
+                    error_lname = false;
+                    error_pwd = false;
+                    error_conpwd = false;
+                    error_email = false;
+
+                    check_fname();
+                    check_lname();
+                    check_email();
+                    check_pwd();
+                    check_con_pwd();
+
+                    if (error_fname === false && error_lname === false && error_email === false && error_pwd === false && error_conpwd === false){
+                        //alert("Registration Successful!");
+                        return true
+                    }
+
+                    else {
+                        //alert("Please fill the form correctly");
+                        return false;
+                    }
+                });
+            })
+        </script>
+
+        <!-- Template Main JS File -->
+        <script src="{% static 'assets/js/main.js' %}"></script>
+    </body>
+</html>
