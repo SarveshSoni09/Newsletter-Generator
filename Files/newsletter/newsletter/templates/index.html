@@ -6,12 +6,12 @@
         <meta content="width=device-width, initial-scale=1.0" name="viewport">
         {% load static %}
         <title>KJSIEIT Newsletter Portal</title>
-        <meta content="Online Newsletter Generator for KJSIEIT" name="description">
-        <meta content="" name="keywords">
+        <meta content="Newsletter Generator Portal for Department of Computer Engineering, KJSIEIT" name="description">
+        <meta content="KJSIEIT, Newsletter, KJSIEIT Newsletter, KJSIEIT Newletter Portal" name="keywords">
 
         <!-- Favicons -->
         <link href="{% static 'assets/img/slogo.png' %}" rel="icon">
-        <link href="{% static 'assets/img/apple-touch-icon.png' %}" rel="apple-touch-icon">
+        <!-- <link href="{% static 'assets/img/apple-touch-icon.png' %}" rel="apple-touch-icon"> -->
 
         <!-- Google Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Montserrat:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
@@ -31,38 +31,8 @@
         <header id="header" class="d-flex align-items-center">
             <div class="container d-flex align-items-center justify-content-between">
                 <div class="logo">
-                    <a href="https://kjsieit.somaiya.edu.in/en"><img src="{% static 'assets/kjsieit-logo.svg' %}" alt="" class="img-fluid"></a>
+                    <a href="https://kjsieit.somaiya.edu.in/en"><img src="{% static 'assets/kjsieit-logo.svg' %}" alt="KJSIEIT Logo" class="img-fluid"></a>
                 </div>
-
-                <!-- <nav id="navbar" class="navbar">
-                    <ul>
-                        <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
-                        <li><a class="nav-link scrollto" href="#about">About</a></li>
-                        <li><a class="nav-link scrollto" href="#services">Services</a></li>
-                        <li><a class="nav-link scrollto " href="#portfolio">Portfolio</a></li>
-                        <li><a class="nav-link scrollto" href="#team">Team</a></li>
-                        <li><a class="nav-link scrollto" href="#pricing">Pricing</a></li>
-                        <li class="dropdown"><a href="#"><span>Drop Down</span> <i class="bi bi-chevron-down"></i></a>
-                            <ul>
-                                <li><a href="#">Drop Down 1</a></li>
-                                <li class="dropdown"><a href="#"><span>Deep Drop Down</span> <i class="bi bi-chevron-right"></i></a>
-                                    <ul>
-                                        <li><a href="#">Deep Drop Down 1</a></li>
-                                        <li><a href="#">Deep Drop Down 2</a></li>
-                                        <li><a href="#">Deep Drop Down 3</a></li>
-                                        <li><a href="#">Deep Drop Down 4</a></li>
-                                        <li><a href="#">Deep Drop Down 5</a></li>
-                                    </ul>
-                                </li>
-                                <li><a href="#">Drop Down 2</a></li>
-                                <li><a href="#">Drop Down 3</a></li>
-                                <li><a href="#">Drop Down 4</a></li>
-                            </ul>
-                        </li>
-                        <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
-                    </ul>
-                    <i class="bi bi-list mobile-nav-toggle"></i>
-                </nav> -->
             </div>
         </header><!-- End Header -->
 
@@ -78,31 +48,24 @@
 
                     <div class="row">
                         <div class="offset-lg-3 col-lg-6 mt-5 mt-lg-0">
-                            <form action="" method="post" role="form" class="php-email-form" data-aos="zoom-in">
+                            <form action="" onsubmit="return validateSignIn()" method="post" role="form" class="php-email-form" data-aos="zoom-in">
                                 {% csrf_token %}
+
+                                <!-- Email -->
                                 <div class="form-group mt-3">
-                                    <input type="email" class="form-control box" name="email" id="email" placeholder="Email Address" required>
-                                    <span id="check-email-id"></span>
+                                    <input type="text" class="form-control box" name="email" id="form_email" placeholder="Email Address">
+                                    <span class="error_form" id="email_error_message"></span>
                                 </div>
+
+                                <!-- Password -->
                                 <div class="form-group mt-3">
-                                    <input class="form-control box" name="pwd" rows="5" type='password' placeholder="Password" required></input>
+                                    <input class="form-control box" name="pwd" rows="5" type='password' placeholder="Password" id="form_pwd"></input>      
+                                    <span class="error_form" id="pwd_error_message"></span>
                                     <a href="#" class="form-links" style="font-size: small;">Forgot Password?</a>
-                                    <span class="check-password"></span>
                                 </div>
-                                <!-- <div class="form-check form-check-inline" style="padding-left: 0px;">
-                                    <label class="form-check-label" for="faculty">
-                                        Faculty
-                                        <input class="option-input radio-btn" type="radio" name="type" id="faculty-btn" value="faculty">
-                                    </label>
-                                </div>
-                                <div class="form-check form-check-inline">
-                                    <label class="form-check-label" for="admin">
-                                        Admin
-                                        <input class="option-input radio-btn" type="radio" name="type" id="admin-btn" value="admin">
-                                    </label>
-                                </div> -->
                                 
-                                <div class="text-center"><button type="submit">Sign in</button></div> 
+                                <div class="text-center mt-3"><button type="submit">Sign in</button></div> 
+                                
                                 <div class="text-center mt-3">
                                     Don't have an account? <a href="{% url 'registration' %}" class="form-links">Sign up</a>
                                 </div>                                               

@@ -6,8 +6,8 @@
         {% load static %}
         
         <title>KJSIEIT Newsletter Portal</title>
-        <meta content="" name="description">
-        <meta content="" name="keywords">
+        <meta content="Newsletter Generator Portal for Department of Computer Engineering, KJSIEIT" name="description">
+        <meta content="KJSIEIT, Newsletter, KJSIEIT Newsletter, KJSIEIT Newsletter Portal" name="keywords">
 
         <!-- Favicons -->
         <link href="{% static 'assets/img/slogo.png' %}" rel="icon">
@@ -18,24 +18,20 @@
         <!-- Vendor CSS Files -->
         <link href="{% static 'assets/vendor/aos/aos.css' %}" rel="stylesheet">
         <link href="{% static 'assets/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
-        <link href="{% static 'assets/vendor/bootstrap-icons/bootstrap-icons.css' %}" rel="stylesheet">
         <link href="{% static 'assets/vendor/boxicons/css/boxicons.min.css' %}" rel="stylesheet">
         <link href="{% static 'assets/vendor/glightbox/css/glightbox.min.css' %}" rel="stylesheet">
         <link href="{% static 'assets/vendor/swiper/swiper-bundle.min.css' %}" rel="stylesheet">
 
         <!-- Template Main CSS File -->
         <link href="{% static 'assets/css/style.css' %}" rel="stylesheet">
-
-        <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
     </head>
 
     <body>
-
         <!-- ======= Header ======= -->
         <header id="header" class="d-flex align-items-center">
             <div class="container d-flex align-items-center justify-content-between">
                 <div class="logo">
-                    <a href="https://kjsieit.somaiya.edu.in/en"><img src="{% static 'assets/kjsieit-logo.svg' %}" alt="" class="img-fluid"></a>
+                    <a href="https://kjsieit.somaiya.edu.in/en"><img src="{% static 'assets/kjsieit-logo.svg' %}" alt="KJSIEIT Logo" class="img-fluid"></a>
                 </div>
             </div>
         </header><!-- End Header -->
@@ -50,44 +46,59 @@
                             <p><font color="red">{{message}}</font></p>
                         {% endfor %}
                     </div>
+                    
                     <div class="row">
                         <div class="offset-lg-3 col-lg-6 mt-5 mt-lg-0">
                             <form onsubmit="return validate()" action="registration" method="post" role="form" class="php-email-form" data-aos="zoom-in" id="signUp">
                                 {% csrf_token %}
                                 <div class="row">
+
+                                    <!-- First Name -->
                                     <div class="col-md-6 form-group">
                                         <input type="text" name="fname" class="form-control box" id="form_fname" placeholder="First Name">
                                         <span class="error_form" id="fname_error_message"></span>
                                     </div>
+
+                                    <!-- Last Name -->
                                     <div class="col-md-6 form-group mt-3 mt-md-0">
                                         <input type="text" name="lname" class="form-control box" id="form_lname" placeholder="Last Name">
                                         <span class="error_form" id="lname_error_message"></span>
                                     </div>                                 
                                 </div>
+
+                                <!-- Email -->
                                 <div class="form-group mt-3">
-                                    <input type="email" class="form-control box" name="email" id="form_email" placeholder="Email Address">
+                                    <input type="text" class="form-control box" name="email" id="form_email" placeholder="Email Address">
                                     <span class="error_form" id="email_error_message"></span>
                                 </div>
+
+                                <!-- Password -->
                                 <div class="form-group mt-3">
                                     <input class="form-control box" id="form_pwd" name="pwd" rows="5" placeholder="Password" type="password"></input>
                                     <span class="error_form" id="pwd_error_message"></span>
                                 </div>
+
+                                <!-- Confirm Password -->
                                 <div class="form-group mt-3">
                                     <input class="form-control box" id="form_con_pwd" name="conpwd" rows="5" placeholder="Confirm Password"  type="password"></input>
                                     <span class="error_form" id="conpwd_error_message"></span>
                                 </div>
                                 
+                                <!-- Department -->
                                 <div class="form-group mt-3">
                                     <select class="dropdown form-control box" name="dept" id="department" for="department">
-                                        <option>Department</option>
+                                        <option value="Department">Department</option>
                                         <option value="Computer">Computer</option>
                                         <option value="Information Technology">Information Technology</option>
                                         <option value="extc">Electronics and Telecommunication</option>
                                         <option value="etrx">Electronics</option>
                                         <option value="aids">Artificial Intelligence & Data Science</option>
                                     </select>
+                                    <span class="error_form" id="dept_error_message"></span>
                                 </div>
-                                <div class="text-center"><button type="submit" name="btn">Sign up</button></div>
+
+                                <div class="text-center form-group mt-3"><button type="submit" name="btn">Sign up</button></div>
+
                             </form>
                         </div>
                     </div>
