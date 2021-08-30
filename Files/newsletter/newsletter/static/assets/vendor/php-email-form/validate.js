@@ -78,17 +78,24 @@ function validate(){
     }
 
     //validate department
-    let dept = $("#form_dept").val();
-    if (dept == 'Department') {
-        $("#dept_error_message").html('Please select your department.');
-        check_dept = false;
-    } 
-    else {
-        $("#dept_error_message").hide();
-        check_dept = true;
-    }
+    // let dept = $("#form_dept").val();
+    // if (dept == 'Department') {
+    //     $("#dept_error_message").html('Please select your department.');
+    //     check_dept = false;
+    // } 
+    // else {
+    //     $("#dept_error_message").hide();
+    //     check_dept = true;
+    // }
 
-    if (check_fname === true && check_lname === true && check_email === true && check_pwd === true && check_dept === true) {
+    // if (check_fname === true && check_lname === true && check_email === true && check_pwd === true && check_dept === true) {
+    //     f = true;
+    // }
+    // else {
+    //     f = false;
+    // }
+
+    if (check_fname === true && check_lname === true && check_email === true && check_pwd === true) {
         f = true;
     }
     else {
