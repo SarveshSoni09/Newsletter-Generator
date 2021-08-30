@@ -52,28 +52,28 @@
                     </div>
                     <div class="row">
                         <div class="offset-lg-3 col-lg-6 mt-5 mt-lg-0">
-                            <form action="registration" method="post" role="form" class="php-email-form" data-aos="zoom-in" id="signUp">
+                            <form onsubmit="return validate()" action="registration" method="post" role="form" class="php-email-form" data-aos="zoom-in" id="signUp">
                                 {% csrf_token %}
                                 <div class="row">
                                     <div class="col-md-6 form-group">
-                                        <input type="text" name="fname" class="form-control box" id="form_fname" placeholder="First Name" required>
+                                        <input type="text" name="fname" class="form-control box" id="form_fname" placeholder="First Name">
                                         <span class="error_form" id="fname_error_message"></span>
                                     </div>
                                     <div class="col-md-6 form-group mt-3 mt-md-0">
-                                        <input type="text" name="lname" class="form-control box" id="form_lname" placeholder="Last Name" required>
+                                        <input type="text" name="lname" class="form-control box" id="form_lname" placeholder="Last Name">
                                         <span class="error_form" id="lname_error_message"></span>
                                     </div>                                 
                                 </div>
                                 <div class="form-group mt-3">
-                                    <input type="email" class="form-control box" name="email" id="form_email" placeholder="Email Address" required>
+                                    <input type="email" class="form-control box" name="email" id="form_email" placeholder="Email Address">
                                     <span class="error_form" id="email_error_message"></span>
                                 </div>
                                 <div class="form-group mt-3">
-                                    <input class="form-control box" id="form_pwd" name="pwd" rows="5" placeholder="Password" type="password" required></input>
+                                    <input class="form-control box" id="form_pwd" name="pwd" rows="5" placeholder="Password" type="password"></input>
                                     <span class="error_form" id="pwd_error_message"></span>
                                 </div>
                                 <div class="form-group mt-3">
-                                    <input class="form-control box" id="form_con_pwd" name="conpwd" rows="5" placeholder="Confirm Password"  type="password" required></input>
+                                    <input class="form-control box" id="form_con_pwd" name="conpwd" rows="5" placeholder="Confirm Password"  type="password"></input>
                                     <span class="error_form" id="conpwd_error_message"></span>
                                 </div>
                                 
