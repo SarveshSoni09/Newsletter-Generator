@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+        <title>KJSIEIT Newsletter Portal - Admin Panel</title>
+        <meta content="Newsletter Generator Portal for Department of Computer Engineering, KJSIEIT" name="description">
+        <meta content="KJSIEIT, Newsletter, KJSIEIT Newsletter, KJSIEIT Newsletter Portal" name="keywords">
+
+        <!-- Favicons -->
+        <link href="assets/img/slogo.png" rel="icon">
+
+        <!-- Google Fonts -->
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Montserrat:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+        <!-- Vendor CSS Files -->
+        <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+        <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+        <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+        <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+
+        <!-- Template Main CSS File -->
+        <link href="assets/css/style.css" rel="stylesheet">
+    </head>
+
+    <body>
+        <!-- ======= Header ======= -->
+        <header id="header" class="d-flex align-items-center">
+            <div class="container d-flex align-items-center justify-content-between">
+                <div class="logo" id="full-logo">
+                    <a href="https://kjsieit.somaiya.edu.in/en"><img src="assets/kjsieit-logo.svg" alt="KJSIEIT Logo" class="img-fluid"></a>
+                </div>
+                <div class="logo" id="trust-logo">
+                    <a href="https://kjsieit.somaiya.edu.in/en"><img src="assets/img/slogo.png" alt="Somaiya Trust Logo" class="img-fluid"></a>
+                </div>
+                <div class="text-end">
+                    <button class="logout" type="">Log Out</button>
+                </div>
+            </div>
+        </header><!-- End Header -->
+
+        <main>
+            <section id="contact" class="contact section-bg">
+                <div class="container">
+                    <nav>
+                        <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                            <button class="nav-link active" id="view-submissions-tab" data-bs-toggle="tab" data-bs-target="#view-submissions" type="button" role="tab" aria-controls="view-submissions" aria-selected="true">View Submissions</button>
+                            <button class="nav-link" id="add-content-tab" data-bs-toggle="tab" data-bs-target="#add-content" type="button" role="tab" aria-controls="add-content" aria-selected="false">Add Content</button>
+                        </div>
+                      </nav>
+                      <div class="tab-content" id="nav-tabContent">
+                        <div class="tab-pane fade show active" id="view-submissions" role="tabpanel" aria-labelledby="view-submissions-tab">
+                            <div class="accordion" id="accordionExample" style="background: white;">
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header" id="headingOne">
+                                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                        Highlights of Faculty/Department
+                                        </button>
+                                    </h2>
+                                    <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                                        <div class="accordion-body">
+                                            <nav>
+                                                <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                                                  <button class="nav-link active" id="highlights1-tab" data-bs-toggle="tab" data-bs-target="#highlights1" type="button" role="tab">Teacher#1</button>
+                                                  <button class="nav-link" id="highlights2-tab" data-bs-toggle="tab" data-bs-target="#highlights2" type="button" role="tab">Teacher#2</button>
+                                                  <button class="nav-link" id="highlights3-tab" data-bs-toggle="tab" data-bs-target="#highlights3" type="button" role="tab">Teacher#3</button>
+                                                </div>
+                                            </nav>
+                                            <div class="tab-content" id="nav-tabContent">
+                                                <div class="tab-pane teacher-content fade show active" id="highlights1" role="tabpanel">1</div>
+                                                <div class="tab-pane teacher-content fade" id="highlights2" role="tabpanel">2</div>
+                                                <div class="tab-pane teacher-content fade" id="highlights3" role="tabpanel">3</div>
+                                            </div>                                        
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header" id="headingTwo">
+                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#remarkableMilestones" aria-expanded="false" aria-controls="collapseTwo">
+                                            Remarkable Milestones
+                                        </button>
+                                    </h2>
+                                    <div id="remarkableMilestones" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+                                        <div class="accordion-body">
+                                            <nav>
+                                                <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                                                  <button class="nav-link active" id="milestones1-tab" data-bs-toggle="tab" data-bs-target="#milestones1" type="button" role="tab">Teacher#1</button>
+                                                  <button class="nav-link" id="milestones2-tab" data-bs-toggle="tab" data-bs-target="#milestones2" type="button" role="tab">Teacher#2</button>
+                                                  <button class="nav-link" id="milestones3-tab" data-bs-toggle="tab" data-bs-target="#milestones3" type="button" role="tab">Teacher#3</button>
+                                                </div>
+                                            </nav>
+                                            <div class="tab-content" id="nav-tabContent">
+                                                <div class="tab-pane teacher-content fade show active" id="milestones1" role="tabpanel">1</div>
+                                                <div class="tab-pane teacher-content fade" id="milestones2" role="tabpanel">2</div>
+                                                <div class="tab-pane teacher-content fade" id="milestones3" role="tabpanel">3</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header" id="headingThree">
+                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#studentActivities" aria-expanded="false" aria-controls="collapseThree">
+                                            Activities conducted for students
+                                        </button>
+                                    </h2>
+                                    <div id="studentActivities" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+                                        <div class="accordion-body">
+                                            <nav>
+                                                <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                                                  <button class="nav-link active" id="activities1-tab" data-bs-toggle="tab" data-bs-target="#activities1" type="button" role="tab">Teacher#1</button>
+                                                  <button class="nav-link" id="activities2-tab" data-bs-toggle="tab" data-bs-target="#activities2" type="button" role="tab">Teacher#2</button>
+                                                  <button class="nav-link" id="activities3-tab" data-bs-toggle="tab" data-bs-target="#activities3" type="button" role="tab">Teacher#3</button>
+                                                </div>
+                                            </nav>
+                                            <div class="tab-content" id="nav-tabContent">
+                                                <div class="tab-pane teacher-content fade show active" id="activities1" role="tabpanel">1</div>
+                                                <div class="tab-pane teacher-content fade" id="activities2" role="tabpanel">2</div>
+                                                <div class="tab-pane teacher-content fade" id="activities3" role="tabpanel">3</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header" id="headingTwo">
+                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#placementStats" aria-expanded="false" aria-controls="collapseTwo">
+                                            Placement Statistics
+                                        </button>
+                                    </h2>
+                                    <div id="placementStats" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+                                        <div class="accordion-body">
+                                            <nav>
+                                                <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                                                  <button class="nav-link active" id="stats1-tab" data-bs-toggle="tab" data-bs-target="#stats1" type="button" role="tab">Teacher#1</button>
+                                                  <button class="nav-link" id="stats2-tab" data-bs-toggle="tab" data-bs-target="#stats2" type="button" role="tab">Teacher#2</button>
+                                                  <button class="nav-link" id="stats3-tab" data-bs-toggle="tab" data-bs-target="#stats3" type="button" role="tab">Teacher#3</button>
+                                                </div>
+                                            </nav>
+                                            <div class="tab-content" id="nav-tabContent">
+                                                <div class="tab-pane teacher-content fade show active" id="stats1" role="tabpanel">1</div>
+                                                <div class="tab-pane teacher-content fade" id="stats2" role="tabpanel">2</div>
+                                                <div class="tab-pane teacher-content fade" id="stats3" role="tabpanel">3</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header" id="headingThree">
+                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#studentAchievements" aria-expanded="false" aria-controls="collapseThree">
+                                            Student Achievements
+                                        </button>
+                                    </h2>
+                                    <div id="studentAchievements" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+                                        <div class="accordion-body">
+                                            <nav>
+                                                <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                                                  <button class="nav-link active" id="achievements1-tab" data-bs-toggle="tab" data-bs-target="#achievements1" type="button" role="tab">Teacher#1</button>
+                                                  <button class="nav-link" id="achievements2-tab" data-bs-toggle="tab" data-bs-target="#achievements2" type="button" role="tab">Teacher#2</button>
+                                                  <button class="nav-link" id="achievements3-tab" data-bs-toggle="tab" data-bs-target="#achievements3" type="button" role="tab">Teacher#3</button>
+                                                </div>
+                                            </nav>
+                                            <div class="tab-content" id="nav-tabContent">
+                                                <div class="tab-pane teacher-content fade show active" id="achievements1" role="tabpanel">1</div>
+                                                <div class="tab-pane teacher-content fade" id="achievements2" role="tabpanel">2</div>
+                                                <div class="tab-pane teacher-content fade" id="achievements3" role="tabpanel">3</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header" id="headingTwo">
+                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#eventsFaculties" aria-expanded="false" aria-controls="collapseTwo">
+                                            Events attended by Faculties
+                                        </button>
+                                    </h2>
+                                    <div id="eventsFaculties" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+                                        <div class="accordion-body">
+                                            <nav>
+                                                <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                                                  <button class="nav-link active" id="events1-tab" data-bs-toggle="tab" data-bs-target="#events1" type="button" role="tab">Teacher#1</button>
+                                                  <button class="nav-link" id="events2-tab" data-bs-toggle="tab" data-bs-target="#events2" type="button" role="tab">Teacher#2</button>
+                                                  <button class="nav-link" id="events3-tab" data-bs-toggle="tab" data-bs-target="#events3" type="button" role="tab">Teacher#3</button>
+                                                </div>
+                                            </nav>
+                                            <div class="tab-content" id="nav-tabContent">
+                                                <div class="tab-pane teacher-content fade show active" id="events1" role="tabpanel">1</div>
+                                                <div class="tab-pane teacher-content fade" id="events2" role="tabpanel">2</div>
+                                                <div class="tab-pane teacher-content fade" id="events3" role="tabpanel">3</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header" id="headingThree">
+                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#projects" aria-expanded="false" aria-controls="collapseThree">
+                                            Projects by Companies
+                                        </button>
+                                    </h2>
+                                    <div id="projects" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+                                        <div class="accordion-body">
+                                            <nav>
+                                                <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                                                  <button class="nav-link active" id="projects1-tab" data-bs-toggle="tab" data-bs-target="#projects1" type="button" role="tab">Teacher#1</button>
+                                                  <button class="nav-link" id="projects2-tab" data-bs-toggle="tab" data-bs-target="#projects2" type="button" role="tab">Teacher#2</button>
+                                                  <button class="nav-link" id="projects3-tab" data-bs-toggle="tab" data-bs-target="#projects3" type="button" role="tab">Teacher#3</button>
+                                                </div>
+                                            </nav>
+                                            <div class="tab-content" id="nav-tabContent">
+                                                <div class="tab-pane teacher-content fade show active" id="projects1" role="tabpanel">1</div>
+                                                <div class="tab-pane teacher-content fade" id="projects2" role="tabpanel">2</div>
+                                                <div class="tab-pane teacher-content fade" id="projects3" role="tabpanel">3</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header" id="headingThree">
+                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#phd" aria-expanded="false" aria-controls="collapseThree">
+                                            PhD. pursuing Faculties
+                                        </button>
+                                    </h2>
+                                    <div id="phd" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+                                        <div class="accordion-body">
+                                            <nav>
+                                                <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                                                  <button class="nav-link active" id="phd1-tab" data-bs-toggle="tab" data-bs-target="#phd1" type="button" role="tab">Teacher#1</button>
+                                                  <button class="nav-link" id="phd2-tab" data-bs-toggle="tab" data-bs-target="#phd2" type="button" role="tab">Teacher#2</button>
+                                                  <button class="nav-link" id="phd3-tab" data-bs-toggle="tab" data-bs-target="#phd3" type="button" role="tab">Teacher#3</button>
+                                                </div>
+                                            </nav>
+                                            <div class="tab-content" id="nav-tabContent">
+                                                <div class="tab-pane teacher-content fade show active" id="phd1" role="tabpanel">1</div>
+                                                <div class="tab-pane teacher-content fade" id="phd2" role="tabpanel">2</div>
+                                                <div class="tab-pane teacher-content fade" id="phd3" role="tabpanel">3</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="tab-pane fade" id="add-content" role="tabpanel" aria-labelledby="add-content-tab">
+                            <div class="container text-center contact" style="background-color: white;">
+                                <section class="contact">
+                                    <!-- <h2 class="page-title">ADD NEWSLETTER CONTENT</h2> -->
+                                    <form action="" method="post">
+                                        <div class="form-fields">
+                                            <fieldset id="newsletter-header">
+                                                <legend>Newsletter Header</legend>
+                                                <div class="container details-form" id="letter-header">
+                                                    <div>
+                                                        <div class="text-start">
+                                                            <label for="academic year">Academic Year</label>
+                                                        </div>
+                                                        <input class="form-control box" type="text" name="acadyr" id="academic-year" placeholder="2021-2022"><br>
+                                                        <div class="text-start">
+                                                            <label for="academic year">Volume</label>
+                                                        </div>
+                                                        <input class="form-control box" type="text" name="volume" id="Volume"><br>
+                                                        <div class="text-start">
+                                                            <label for="img">Upload Department Image</label>
+                                                        </div>
+                                                        <!-- <div class="text-start"> -->
+                                                            <input class="form-control box img-input" type="file" name="" id="img-highlights"><br>
+                                                        <!-- </div> -->
+                                                        <div class="text-start">
+                                                            <label for="text">Editorial Desk</label><br>
+                                                        </div>
+                                                        <textarea class="form-control" name="achievement-highlights" id="textarea" cols="30" rows="5"></textarea><br>                                             
+                                                    </div>
+                                                </div>
+                                            </fieldset>
+                                        </div>
+                                        <div class="form-fields">
+                                            <fieldset id="highlights-field">
+                                                <legend>Highlights of Department/Faculty</legend>
+                                                <div class="container details-form" id="highlights">
+                                                    <div>
+                                                        <div class="text-start">
+                                                            <label for="Name of the Faculty">Name of the Faculty Member</label>
+                                                        </div>
+                                                        <input class="form-control box" type="text" name="name" id="name-highlights"><br>
+                            
+                                                        <div class="text-start">
+                                                            <label for="text">Achievement</label><br>
+                                                        </div>
+                                                        <textarea class="form-control" name="achievement-highlights" id="textarea" cols="30" rows="5"></textarea><br>
+                            
+                                                        <div class="text-start">
+                                                            <label for="img">Upload Image</label>
+                                                        </div>
+                                                        <div class="text-start">
+                                                            <input class="form-control box img-input" type="file" name="" id="img-highlights">
+                                                        </div>
+                                                    </div>
+                                                    <div class="text-end">
+                                                        <button class="add-more" type="button" id="btn-highlights" onclick="repeatHighlights()">Add More</button>
+                                                    </div>                                
+                                                </div>  
+                                            </fieldset>
+                                        </div>
+                
+                                        <div class="form-fields">
+                                            <fieldset>
+                                                <legend>Remarkable Milestones</legend>
+                                                <div class="container details-form" id="milestones">
+                                                    <div>
+                                                        <div class="text-start">
+                                                            <label for="text">Description</label><br>
+                                                        </div>
+                                                        <textarea class="form-control" name="desc-milestones" id="textarea" cols="30" rows="5"></textarea><br>
+                            
+                                                        <div class="text-start">
+                                                            <label for="img">Upload Image</label>
+                                                        </div>
+                                                        <input class="form-control box img-input" type="file" name="" id="img-milestones">
+                                                    </div>
+                                                    <div class="text-end">
+                                                        <button class="add-more" type="button">Add More</button>
+                                                    </div>
+                                                </div>
+                                            </fieldset>
+                                        </div>
+                                        
+                                        <div class="form-fields">
+                                            <fieldset>
+                                                <legend>Activity conducted for students</legend>
+                                                <div class="container details-form" id="activities">
+                                                    <div>
+                                                        <div class="text-start">
+                                                            <label for="text">Description</label><br>
+                                                        </div>
+                                                        <textarea class="form-control" name="desc-activities" id="textarea" cols="30" rows="5"></textarea><br>
+                            
+                                                        <div class="text-start">
+                                                            <label for="img">Upload Image</label>
+                                                        </div>
+                                                        <input class="form-control box img-input" type="file" name="img-activities" id=""><br>
+                            
+                                                        <div class="text-start">
+                                                            <label for="">Image Caption</label>
+                                                        </div>
+                                                        <input type="text" name="" id="img-capt-activities" class="form-control box">
+                                                    </div>
+                                                    <div class="text-end">
+                                                        <button class="add-more" type="button">Add More</button>
+                                                    </div>
+                                                </div>
+                                            </fieldset>
+                                        </div>
+                
+                                        <div class="form-fields">
+                                            <fieldset>
+                                                <legend>Placement Statistics</legend>
+                                                <div class="container details-form">
+                                                    <div class="row stat-row" id="stat-row">
+                                                        <div class="col-12 col-md-6 text-start">
+                                                            <label for="companyname">Company name</label><br>
+                                                            <input type="text" class="form-control box">
+                                                        </div>
+                                                        <div class="col-12 col-md-6 text-start">
+                                                            <label for="companyname">Number of Students</label><br>
+                                                            <input type="number" class="form-control box">
+                                                        </div>
+                                                    </div>
+                                                    <div class="row stat-row">
+                                                        <div class="col-12 col-md-6 text-start">
+                                                            <label for="companyname">Company name</label><br>
+                                                            <input type="text" class="form-control box">
+                                                        </div>
+                                                        <div class="col-12 col-md-6 text-start">
+                                                            <label for="companyname">Number of Students</label><br>
+                                                            <input type="number" class="form-control box">
+                                                        </div>
+                                                    </div>
+                                                    <div class="row stat-row">
+                                                        <div class="col-12 col-md-6 text-start">
+                                                            <label for="companyname">Company name</label><br>
+                                                            <input type="text" class="form-control box">
+                                                        </div>
+                                                        <div class="col-12 col-md-6 text-start">
+                                                            <label for="companyname">Number of Students</label><br>
+                                                            <input type="number" class="form-control box">
+                                                        </div>
+                                                    </div>
+                                                    <div class="row stat-row">
+                                                        <div class="col-12 col-md-6 text-start">
+                                                            <label for="companyname">Company name</label><br>
+                                                            <input type="text" class="form-control box">
+                                                        </div>
+                                                        <div class="col-12 col-md-6 text-start">
+                                                            <label for="companyname">Number of Students</label><br>
+                                                            <input type="number" class="form-control box">
+                                                        </div>
+                                                    </div>
+                                                    <div class="text-end">
+                                                        <button class="add-more" type="button" style="margin-top: 0px;">Add More</button>
+                                                    </div>
+                                                </div>
+                                            </fieldset>
+                                        </div>
+                
+                                        <div class="form-fields">
+                                            <fieldset>
+                                                <legend>Student Achievements</legend>
+                                                <div class="container details-form" id="stud-achievements">
+                                                    <div>
+                                                        <div class="text-start">
+                                                            <label for="text">Description</label><br>
+                                                        </div>
+                                                        <textarea class="form-control" name="desc-stu-achievements" id="textarea" cols="30" rows="5"></textarea><br>
+                            
+                                                        <div class="text-start">
+                                                            <label for="img">Upload Image</label>
+                                                        </div>
+                                                        <input class="form-control box img-input" type="file" name="img-stu-achievements" id="img-stu-achievements">
+                                                    </div>
+                                                    <div class="text-end">
+                                                        <button class="add-more" type="button">Add More</button>
+                                                    </div>
+                                                </div>
+                                            </fieldset>
+                                        </div>
+                
+                                        <div class="form-fields">
+                                            <fieldset>
+                                                <legend>Events Attended by Faculties</legend>
+                                                <div class="container details-form">
+                                                    <div>
+                                                        <div class="text-start">
+                                                            <label for="text">Description</label><br>
+                                                        </div>
+                                                        <textarea class="form-control" name="desc-events" id="textarea" cols="30" rows="5"></textarea><br>
+                            
+                                                        <div class="text-start">
+                                                            <label for="img">Upload Image</label>
+                                                        </div>
+                                                        <input class="form-control box img-input" type="file" name="img-events" id="img-events">
+                                                    </div>
+                                                    <div class="text-end">
+                                                        <button class="add-more" type="button">Add More</button>
+                                                    </div>
+                                                </div>
+                                            </fieldset>
+                                        </div>
+                
+                                        <div class="form-fields">
+                                            <fieldset>
+                                                <legend>Projects by Companies</legend>
+                                                <div class="container details-form">
+                                                    <div>
+                                                        <div class="text-start">
+                                                            <label for="text">Description</label><br>
+                                                        </div>
+                                                        <textarea class="form-control" name="desc-proj" id="textarea" cols="30" rows="5"></textarea>
+                                                    </div>
+                                                    <div class="text-end">
+                                                        <button class="add-more" type="button">Add More</button>
+                                                    </div>
+                                                </div>
+                                            </fieldset>
+                                        </div>
+                
+                                        <div class="form-fields">
+                                            <fieldset>
+                                                <legend>PhD. pursuing Faculties</legend>
+                                                <div class="container details-form">
+                                                    <div class="container details-form">
+                                                        <div>
+                                                            <div class="text-start">
+                                                                <label for="text">Description</label><br>
+                                                            </div>
+                                                            <textarea class="form-control" name="desc-phd" id="textarea" cols="30" rows="5"></textarea>
+                                                        </div>
+                                                        <div class="text-end">
+                                                            <button class="add-more" type="button">Add More</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </fieldset>
+                                        </div>
+                                        <div class="text-center">
+                                            <button class="logout" type="submit">Submit</button>
+                                        </div>
+                                    </form>
+                                </section>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer id="footer">
+            <div class="container footer-bottom clearfix">
+                <div class="copyright">
+                    <strong><span>Developed by students of KJSIEIT</span></strong>
+                </div>
+            </div>
+        </footer><!-- End Footer -->
+
+        <!-- Vendor JS Files -->
+        <script src="assets/vendor/jquery/jquery.slim.min.js"></script>
+        <script src="assets/vendor/jsdelivr/popper.min.js"></script>
+        <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+        <script src="assets/vendor/aos/aos.js"></script>
+        <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+        <script src="assets/vendor/php-email-form/validate.js"></script>
+
+        <!-- Template Main JS File -->
+        <script src="assets/js/main.js"></script>
+    </body>
+</html>
