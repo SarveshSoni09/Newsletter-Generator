@@ -10,8 +10,12 @@ def login(request):
         pwd = request.POST['pwd']
         user = auth.authenticate(username=email, password=pwd)
         if user is not None:
-            auth.login(request, user)
-            return redirect('test')
+            if request.user.is_superuser:
+                auth.login(request, user)
+                return redirect('admin-panel')
+            else:
+                auth.login(request, user)
+                return redirect('faculty-panel')
         else:
             messages.info(request, 'Invalid email or password')
             return redirect('/')
