@@ -19,6 +19,7 @@ from register import views as regv
 from login import views as logv
 from admin_panel import views as admv
 from faculty_panel import views as facv
+from newsletter import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -27,6 +28,7 @@ urlpatterns = [
     path('test',logv.test, name='test'),
     path('logout', logv.logout, name='logout'),
     path('admin-panel', logv.login, name='admin-panel'),
-    path('faculty-panel', logv.login, name='faculty-panel')
+    path('faculty-panel', logv.login, name='faculty-panel'),
+    path('data-submitted', views.submit_data, name='submit-data' )
 
 ]

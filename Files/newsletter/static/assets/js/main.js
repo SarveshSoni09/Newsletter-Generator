@@ -222,8 +222,9 @@ var original = document.getElementById('highlights');
 function repeatHighlights(){
     var clone = original.cloneNode(true);
     clone.id = "highlights" + ++i;
-    original.parentNode.appendChild(clone);
+    original.parentNode,insertBefore(clone, original.nextSibling);
+    //original.parentNode.appendChild(clone);
     console.log(clone.id)
-    var x = document.getElementById('btn-highlights');
-    x.style.display = "none";
+    // var x = document.getElementById('btn-highlights');
+    // x.style.display = "none";
 }

@@ -6,25 +6,27 @@ from django.contrib.auth.models import User, auth
 
 
 def login(request):
-    if request.method == 'POST':
-        email = request.POST['email']
-        pwd = request.POST['pwd']
-        user = auth.authenticate(username=email, password=pwd)
-        if user is not None:
-            if user.is_superuser:
-                auth.login(request, user)
-                # return redirect('admin-panel')
-                return render(request, 'admin-panel.html')
-            else:
-                auth.login(request, user)
-                # return redirect('faculty-panel')
                 return render(request, 'faculty-panel.html')
+
+    # if request.method == 'POST':
+    #     email = request.POST['email']
+    #     pwd = request.POST['pwd']
+    #     user = auth.authenticate(username=email, password=pwd)
+    #     if user is not None:
+    #         if user.is_superuser:
+    #             auth.login(request, user)
+    #             # return redirect('admin-panel')
+    #             return render(request, 'admin-panel.html')
+    #         else:
+    #             auth.login(request, user)
+    #             # return redirect('faculty-panel')
+    #             return render(request, 'faculty-panel.html')
                 
-        else:
-            messages.info(request, 'Invalid email or password')
-            return redirect('/')
-    else:
-        return render(request, 'index.html')
+    #     else:
+    #         messages.info(request, 'Invalid email or password')
+    #         return redirect('/')
+    # else:
+    #     return render(request, 'index.html')
 
 def test(request):
     return render(request, 'test.html')

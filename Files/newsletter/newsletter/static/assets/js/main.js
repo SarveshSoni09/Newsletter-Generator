@@ -215,15 +215,16 @@ function validateForm() {
     }
 }
 
-document.getElementById('btn-highlights').onclick = repeatHighlights;
+//document.getElementById('btn-highlights').onclick = repeatHighlights;
+var idNums = [0,0,0,0,0,0,0,0];
 
-var i = 0;
-var original = document.getElementById('highlights');
-function repeatHighlights(){
+function repeatSection(section,secNum){
+    var original = document.getElementById(section);
     var clone = original.cloneNode(true);
-    clone.id = "highlights" + ++i;
-    original.parentNode.appendChild(clone);
+    clone.id = section + ++idNums[secNum];
+    original.parentNode.insertBefore(clone, original.nextSibling);
+    // original.parentNode.appendChild(clone); --> Rejected method
     console.log(clone.id)
-    var x = document.getElementById('btn-highlights');
+    var x = document.getElementById('btn-'+section);
     x.style.display = "none";
 }
