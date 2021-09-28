@@ -17,6 +17,8 @@ from django.contrib import admin
 from django.urls import path
 from register import views as regv
 from login import views as logv
+from admin_panel import views as admv
+from faculty_panel import views as facv
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -24,4 +26,7 @@ urlpatterns = [
     path('registration', regv.registration, name='registration'),
     path('test',logv.test, name='test'),
     path('logout', logv.logout, name='logout'),
+    path('admin-panel', logv.login, name='admin-panel'),
+    path('faculty-panel', logv.login, name='faculty-panel')
+
 ]

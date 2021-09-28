@@ -5,6 +5,7 @@
         <meta charset="utf-8">
         <meta content="width=device-width, initial-scale=1.0" name="viewport">
         {% load static %}
+        {% csrf_token %}
         <title>KJSIEIT Newsletter Portal</title>
         <meta content="Newsletter Generator Portal for Department of Computer Engineering, KJSIEIT" name="description">
         <meta content="KJSIEIT, Newsletter, KJSIEIT Newsletter, KJSIEIT Newletter Portal" name="keywords">
@@ -50,7 +51,6 @@
                         <div class="offset-lg-3 col-lg-6 mt-5 mt-lg-0">
                             <form action="" onsubmit="return validateSignIn()" method="post" role="form" class="php-email-form" data-aos="zoom-in">
                                 {% csrf_token %}
-
                                 <!-- Email -->
                                 <div class="form-group mt-3">
                                     <input type="text" class="form-control box" name="email" id="form_email" placeholder="Email Address">

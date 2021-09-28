@@ -3,25 +3,26 @@
     <head>
         <meta charset="utf-8">
         <meta content="width=device-width, initial-scale=1.0" name="viewport">
-
+        {% csrf_token %}
+        {% load static %}
         <title>KJSIEIT Newsletter Portal - Admin Panel</title>
         <meta content="Newsletter Generator Portal for Department of Computer Engineering, KJSIEIT" name="description">
         <meta content="KJSIEIT, Newsletter, KJSIEIT Newsletter, KJSIEIT Newsletter Portal" name="keywords">
 
         <!-- Favicons -->
-        <link href="assets/img/slogo.png" rel="icon">
+        <link href="{% static 'assets/img/slogo.png' %}" rel="icon">
 
         <!-- Google Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Montserrat:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
 
         <!-- Vendor CSS Files -->
-        <link href="assets/vendor/aos/aos.css" rel="stylesheet">
-        <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-        <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
-        <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+        <link href="{% static 'assets/vendor/aos/aos.css' %}" rel="stylesheet">
+        <link href="{% static 'assets/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+        <link href="{% static 'assets/vendor/boxicons/css/boxicons.min.css' %}" rel="stylesheet">
+        <link href="{% static 'assets/vendor/glightbox/css/glightbox.min.css' %}" rel="stylesheet">
 
         <!-- Template Main CSS File -->
-        <link href="assets/css/style.css" rel="stylesheet">
+        <link href="{% static 'assets/css/style.css' %}" rel="stylesheet">
     </head>
 
     <body>
@@ -29,13 +30,13 @@
         <header id="header" class="d-flex align-items-center">
             <div class="container d-flex align-items-center justify-content-between">
                 <div class="logo" id="full-logo">
-                    <a href="https://kjsieit.somaiya.edu.in/en"><img src="assets/kjsieit-logo.svg" alt="KJSIEIT Logo" class="img-fluid"></a>
+                    <a href="https://kjsieit.somaiya.edu.in/en"><img src="{% static 'assets/kjsieit-logo.svg' %}" alt="KJSIEIT Logo" class="img-fluid"></a>
                 </div>
                 <div class="logo" id="trust-logo">
-                    <a href="https://kjsieit.somaiya.edu.in/en"><img src="assets/img/slogo.png" alt="Somaiya Trust Logo" class="img-fluid"></a>
+                    <a href="https://kjsieit.somaiya.edu.in/en"><img src="{% static 'assets/img/slogo.png' %}" alt="Somaiya Trust Logo" class="img-fluid"></a>
                 </div>
                 <div class="text-end">
-                    <button class="logout" type="">Log Out</button>
+                    <a href="logout"><button class="logout" type="">Log Out</button></a>
                 </div>
             </div>
         </header><!-- End Header -->
@@ -244,6 +245,7 @@
                                 <section class="contact">
                                     <!-- <h2 class="page-title">ADD NEWSLETTER CONTENT</h2> -->
                                     <form action="" method="post">
+                                        {% csrf_token %}
                                         <div class="form-fields">
                                             <fieldset id="newsletter-header">
                                                 <legend>Newsletter Header</legend>
@@ -500,14 +502,15 @@
         </footer><!-- End Footer -->
 
         <!-- Vendor JS Files -->
-        <script src="assets/vendor/jquery/jquery.slim.min.js"></script>
-        <script src="assets/vendor/jsdelivr/popper.min.js"></script>
-        <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-        <script src="assets/vendor/aos/aos.js"></script>
-        <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
-        <script src="assets/vendor/php-email-form/validate.js"></script>
+        <script src="{% static 'assets/vendor/jquery/jquery.slim.min.js' %}"></script>
+        <script src="https://cdnjs.com/libraries/popper.js"></script>
+        <script src="https://cdnjs.com/libraries/popper.js"></script>
+        <script src="{% static 'assets/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+        <script src="{% static 'assets/vendor/aos/aos.js' %}"></script>
+        <script src="{% static 'assets/vendor/glightbox/js/glightbox.min.js' %}"></script>
+        <script src="{% static 'assets/vendor/php-email-form/validate.js' %}"></script>
 
         <!-- Template Main JS File -->
-        <script src="assets/js/main.js"></script>
+        <script src="{% static 'assets/js/main.js' %}"></script>
     </body>
 </html>

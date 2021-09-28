@@ -40,6 +40,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'newsletter',
     'register', 
+    'login',
+    'admin_panel',
+    'faculty_panel',
 ]
 
 MIDDLEWARE = [
