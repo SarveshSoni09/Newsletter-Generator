@@ -46,6 +46,9 @@
             <div class="container text-center contact">
                 <section class="contact" style="background-color: white;">
                     <h2 class="page-title">SUBMIT NEWSLETTER CONTENT</h2>
+                    {% for message in messages %}
+                            <h3><font color="green">{{message}}</font></h3>
+                        {% endfor %}
                     <form method="post" action="{% url 'submit-data' %}" name="data_send">
                         {% csrf_token %}
                         <div class="form-fields">
@@ -56,7 +59,7 @@
                                         <div class="text-start">
                                             <label for="Name of the Faculty">Name of the Faculty Member</label>
                                         </div>
-                                        <input class="form-control box" type="text" name="name" id="name-highlights"><br>
+                                        <input class="form-control box" type="text" name="faculty_name" id="name-highlights"><br>
             
                                         <div class="text-start">
                                             <label for="text">Achievement</label><br>
@@ -67,7 +70,7 @@
                                             <label for="img">Upload Image</label>
                                         </div>
                                         <div class="text-start">
-                                            <input class="form-control box img-input" type="file" name="" id="img-highlights">
+                                            <input class="form-control box img-input" type="file" name="high-img" id="img-highlights">
                                         </div>
                                     </div>
                                     <div class="text-end">

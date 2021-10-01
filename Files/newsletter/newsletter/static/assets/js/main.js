@@ -215,16 +215,14 @@ function validateForm() {
     }
 }
 
-//document.getElementById('btn-highlights').onclick = repeatHighlights;
 var idNums = [0,0,0,0,0,0,0,0];
 
 function repeatSection(section,secNum){
     var original = document.getElementById(section);
     var clone = original.cloneNode(true);
-    clone.id = section + ++idNums[secNum];
+    idNums[secNum]++;
+    clone.id = section + idNums[secNum];
     original.parentNode.insertBefore(clone, original.nextSibling);
-    // original.parentNode.appendChild(clone); --> Rejected method
-    console.log(clone.id)
     var x = document.getElementById('btn-'+section);
     x.style.display = "none";
 }

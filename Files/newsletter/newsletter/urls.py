@@ -20,6 +20,8 @@ from login import views as logv
 from admin_panel import views as admv
 from faculty_panel import views as facv
 from newsletter import views
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -29,6 +31,8 @@ urlpatterns = [
     path('logout', logv.logout, name='logout'),
     path('admin-panel', logv.login, name='admin-panel'),
     path('faculty-panel', logv.login, name='faculty-panel'),
-    path('data-submitted', views.submit_data, name='submit-data' )
+    path('data-submitted', facv.submit_data, name='submit-data' )
 
 ]
+
+urlpatterns = urlpatterns + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

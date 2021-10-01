@@ -1,8 +1,6 @@
 from django.shortcuts import render
+from django.contrib import messages
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.models import User, auth 
 
-
-def submit_data(request):
-    if request.method == "POST":
-        print("Button working")
-        return render(request, 'faculty-panel.html')
 
