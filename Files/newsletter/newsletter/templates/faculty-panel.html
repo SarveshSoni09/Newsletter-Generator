@@ -59,18 +59,18 @@
                                         <div class="text-start">
                                             <label for="Name of the Faculty">Name of the Faculty Member</label>
                                         </div>
-                                        <input class="form-control box" type="text" name="faculty_name" id="name-highlights"><br>
+                                        <input class="form-control box" type="text" name="faculty_name0" id="highlights-name"><br>
             
                                         <div class="text-start">
                                             <label for="text">Achievement</label><br>
                                         </div>
-                                        <textarea class="form-control" name="achievement-highlights" id="textarea" cols="30" rows="5"></textarea><br>
+                                        <textarea class="form-control" name="achievements0" id="highlights-desc" cols="30" rows="5"></textarea><br>
             
                                         <div class="text-start">
                                             <label for="img">Upload Image</label>
                                         </div>
                                         <div class="text-start">
-                                            <input class="form-control box img-input" type="file" name="high-img" id="img-highlights">
+                                            <input class="form-control box img-input" type="file" name="high-img0" id="highlights-img">
                                         </div>
                                     </div>
                                     <div class="text-end">
@@ -262,7 +262,8 @@
                             </fieldset>
                         </div>
                         <div class="text-center">
-                            <button class="logout" type="submit" >Submit</button>
+                            <button class="logout" type="submit" onclick="sendArray()" >Submit</button>
+                            <input id="array" name="array" type="hidden" value="5" />
                         </div>
                     </form>
                 </section>

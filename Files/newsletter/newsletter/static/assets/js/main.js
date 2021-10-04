@@ -222,7 +222,17 @@ function repeatSection(section,secNum){
     var clone = original.cloneNode(true);
     idNums[secNum]++;
     clone.id = section + idNums[secNum];
+    if (secNum==0)
+    {
+      document.getElementById(section+'-name').setAttribute('name','faculty_name'+idNums[secNum]);
+      document.getElementById(section+'-desc').setAttribute('name','achievements'+idNums[secNum]);
+      document.getElementById(section+'-img').setAttribute('name','high-img'+idNums[secNum]);
+    }
     original.parentNode.insertBefore(clone, original.nextSibling);
     var x = document.getElementById('btn-'+section);
     x.style.display = "none";
+}
+
+function sendArray(){
+  document.getElementById('array').setAttribute('value',idNums);
 }
