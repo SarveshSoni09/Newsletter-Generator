@@ -222,11 +222,47 @@ function repeatSection(section,secNum){
     var clone = original.cloneNode(true);
     idNums[secNum]++;
     clone.id = section + idNums[secNum];
-    if (secNum==0)
+    switch (secNum)
     {
+    case 0:
       document.getElementById(section+'-name').setAttribute('name','faculty_name'+idNums[secNum]);
       document.getElementById(section+'-desc').setAttribute('name','achievements'+idNums[secNum]);
       document.getElementById(section+'-img').setAttribute('name','high-img'+idNums[secNum]);
+      break;
+
+    case 1:
+      document.getElementById(section+'-desc').setAttribute('name','milestones-desc'+idNums[secNum]);
+      document.getElementById(section+'-img').setAttribute('name','milestones-img'+idNums[secNum]);
+      break;
+
+    case 2:
+      document.getElementById(section+'-desc').setAttribute('name','activities-desc'+idNums[secNum]);
+      document.getElementById(section+'-img').setAttribute('name','activities-img'+idNums[secNum]);
+      document.getElementById(section+'-cap').setAttribute('name','activities-cap'+idNums[secNum]);
+      break;
+
+    case 3:
+      document.getElementById(section+'-comp').setAttribute('name','placements-comp'+idNums[secNum]);
+      document.getElementById(section+'-num').setAttribute('name','placements-num'+idNums[secNum]);
+      break;
+
+    case 4:
+      document.getElementById(section+'-desc').setAttribute('name','students-desc'+idNums[secNum]);
+      document.getElementById(section+'-img').setAttribute('name','students-img'+idNums[secNum]);
+      break;
+
+    case 5:
+      document.getElementById(section+'-desc').setAttribute('name','events-desc'+idNums[secNum]);
+      document.getElementById(section+'-img').setAttribute('name','events-img'+idNums[secNum]);
+      break;
+
+    case 6:
+      document.getElementById(section+'-desc').setAttribute('name','projects-desc'+idNums[secNum]);
+      break;
+
+    case 7:
+      document.getElementById(section+'-desc').setAttribute('name','phd-desc'+idNums[secNum]);
+      break;
     }
     original.parentNode.insertBefore(clone, original.nextSibling);
     var x = document.getElementById('btn-'+section);
