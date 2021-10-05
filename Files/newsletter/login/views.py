@@ -6,7 +6,7 @@ from django.contrib.auth.models import User, auth
 
 
 def login(request):
-                return render(request, 'faculty-panel.html')
+                return render(request, 'admin-panel.html')
 
     # if request.method == 'POST':
     #     email = request.POST['email']

@@ -256,16 +256,19 @@ function repeatSection(section,secNum){
       break;
 
     case 6:
-      document.getElementById(section+'-desc').setAttribute('name','projects-desc'+idNums[secNum]);
+      document.getElementById(section+'-desc').setAttribute('name','project-desc'+idNums[secNum]);
       break;
 
     case 7:
-      document.getElementById(section+'-desc').setAttribute('name','phd-desc'+idNums[secNum]);
+      document.getElementById(section+'-desc').setAttribute('name','phds-desc'+idNums[secNum]);
       break;
     }
-    original.parentNode.insertBefore(clone, original.nextSibling);
     var x = document.getElementById('btn-'+section);
     x.style.display = "none";
+    console.log(original);
+    console.log(clone);
+    original.parentNode.insertBefore(clone, original.nextSibling);
+
 }
 
 function sendArray(){

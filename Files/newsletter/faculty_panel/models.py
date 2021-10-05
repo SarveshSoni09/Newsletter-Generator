@@ -9,11 +9,11 @@ class Highlights(models.Model):
 
 class Milestones(models.Model):
     description = models.TextField()
-    image = models.ImageField(upload_to='images')
+    image = models.ImageField(upload_to='images/')
 
 class Activities(models.Model):
     description = models.TextField()
-    image = models.ImageField(upload_to='images')
+    image = models.ImageField(upload_to='images/')
     caption = models.CharField(max_length=200)
 
 class Placements(models.Model):
@@ -22,11 +22,11 @@ class Placements(models.Model):
 
 class Students(models.Model):
     description = models.TextField()
-    image = models.ImageField(upload_to='images')
+    image = models.ImageField(upload_to='images/')
 
 class Events(models.Model):
     description = models.TextField()
-    image = models.ImageField(upload_to='images')
+    image = models.ImageField(upload_to='images/')
 
 class Projects(models.Model):
     description = models.TextField()
