@@ -25,25 +25,25 @@ def faculty_highlights(request, num):
     for x in range(int(num[0])+1):
         faculty_name = request.POST['faculty_name'+str(x)]
         achievement = request.POST['achievements'+str(x)]
-        image = request.FILES['high-img'+str(x)]
-        if faculty_name != '' or achievement != '' or image != '':
+        image = request.FILES.get('high-img'+str(x),None)
+        if faculty_name != '' or achievement != '' or image is not None:
             faculty_highlights = Highlights(faculty_name = faculty_name, achievement = achievement, image=image)
             faculty_highlights.save()
 
 def remarkable_milestones(request, num):
     for x in range (int(num[1])+1):
         description = request.POST['milestones-desc'+str(x)]
-        image = request.FILES['milestones-img'+str(x)]
-        if description != '' or image != '':
+        image = request.FILES.get('milestones-img'+str(x),None)
+        if description != '' or image is not None:
             remarkable_milestones = Milestones(description=description, image=image)
             remarkable_milestones.save()
 
 def activities_conducted(request, num):
     for x in range (int(num[2])+1):
         description = request.POST['activities-desc'+str(x)]
-        image = request.FILES['activities-img'+str(x)]
+        image = request.FILES.get('activities-img'+str(x),None)
         caption = request.POST['activities-cap'+str(x)]
-        if description != '' or image != '' or caption != '':
+        if description != '' or image is not None or caption != '':
             activities_conducted = Activities(description=description, image=image, caption=caption)
             activities_conducted.save()
 
@@ -58,16 +58,16 @@ def placement_stats(request, num):
 def student_achievements(request, num):
     for x in range (int(num[4])+1):
         description = request.POST['students-desc'+str(x)]
-        image = request.FILES['students-img'+str(x)]
-        if description != '' or image != '':
+        image = request.FILES.get('students-img'+str(x),None)
+        if description != '' or image is not None:
             student_achievements = Students(description=description, image=image)
             student_achievements.save()
 
 def events_faculties(request, num):
     for x in range (int(num[5])+1):
         description = request.POST['events-desc'+str(x)]
-        image = request.FILES['events-img'+str(x)]
-        if description != '' or image != '':
+        image = request.FILES.get('events-img'+str(x),None)
+        if description != '' or image is not None:
             events_faculties = Events(description=description, image=image)
             events_faculties.save()
 
