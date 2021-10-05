@@ -5,7 +5,7 @@ import os
 class Highlights(models.Model):
     faculty_name = models.CharField(max_length=100)
     achievement = models.TextField()
-    image = models.ImageField(upload_to='images')
+    image = models.ImageField(upload_to='images/')
 
 class Milestones(models.Model):
     description = models.TextField()

@@ -215,16 +215,60 @@ function validateForm() {
     }
 }
 
-document.getElementById('btn-highlights').onclick = repeatHighlights;
+var idNums = [0,0,0,0,0,0,0,0];
 
-var i = 0;
-var original = document.getElementById('highlights');
-function repeatHighlights(){
+function repeatSection(section,secNum){
+    var original = document.getElementById(section);
     var clone = original.cloneNode(true);
-    clone.id = "highlights" + ++i;
-    original.parentNode,insertBefore(clone, original.nextSibling);
-    //original.parentNode.appendChild(clone);
-    console.log(clone.id)
-    // var x = document.getElementById('btn-highlights');
-    // x.style.display = "none";
+    idNums[secNum]++;
+    clone.id = section + idNums[secNum];
+    switch (secNum)
+    {
+    case 0:
+      document.getElementById(section+'-name').setAttribute('name','faculty_name'+idNums[secNum]);
+      document.getElementById(section+'-desc').setAttribute('name','achievements'+idNums[secNum]);
+      document.getElementById(section+'-img').setAttribute('name','high-img'+idNums[secNum]);
+      break;
+
+    case 1:
+      document.getElementById(section+'-desc').setAttribute('name','milestones-desc'+idNums[secNum]);
+      document.getElementById(section+'-img').setAttribute('name','milestones-img'+idNums[secNum]);
+      break;
+
+    case 2:
+      document.getElementById(section+'-desc').setAttribute('name','activities-desc'+idNums[secNum]);
+      document.getElementById(section+'-img').setAttribute('name','activities-img'+idNums[secNum]);
+      document.getElementById(section+'-cap').setAttribute('name','activities-cap'+idNums[secNum]);
+      break;
+
+    case 3:
+      document.getElementById(section+'-comp').setAttribute('name','placements-comp'+idNums[secNum]);
+      document.getElementById(section+'-num').setAttribute('name','placements-num'+idNums[secNum]);
+      break;
+
+    case 4:
+      document.getElementById(section+'-desc').setAttribute('name','students-desc'+idNums[secNum]);
+      document.getElementById(section+'-img').setAttribute('name','students-img'+idNums[secNum]);
+      break;
+
+    case 5:
+      document.getElementById(section+'-desc').setAttribute('name','events-desc'+idNums[secNum]);
+      document.getElementById(section+'-img').setAttribute('name','events-img'+idNums[secNum]);
+      break;
+
+    case 6:
+      document.getElementById(section+'-desc').setAttribute('name','projects-desc'+idNums[secNum]);
+      break;
+
+    case 7:
+      document.getElementById(section+'-desc').setAttribute('name','phd-desc'+idNums[secNum]);
+      break;
+    }
+    original.parentNode.insertBefore(clone, original.nextSibling);
+    var x = document.getElementById('btn-'+section);
+    x.style.display = "none";
+}
+
+function sendArray(){
+  document.getElementById('array').setAttribute('value',idNums);
 }

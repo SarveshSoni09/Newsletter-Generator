@@ -216,7 +216,6 @@ function validateForm() {
 }
 
 var idNums = [0,0,0,0,0,0,0,0];
-
 function repeatSection(section,secNum){
     var original = document.getElementById(section);
     var clone = original.cloneNode(true);
