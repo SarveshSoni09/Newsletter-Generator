@@ -2,7 +2,6 @@ from django.shortcuts import render
 from faculty_panel.models import *
 from django.contrib import messages
 from admin_panel.models import * 
-admin_request = False
 # Create your views here.
 def faculty_page(request):
     return render(request, 'faculty-panel.html')
@@ -11,7 +10,6 @@ def submit_data(request):
     if request.method == "POST":
         num = request.POST['array']
         num = num.split(',')
-        newsletter_header(request)
         faculty_highlights(request, num)
         remarkable_milestones(request, num)
         activities_conducted(request, num)
@@ -21,20 +19,7 @@ def submit_data(request):
         project_companies(request, num)
         phd_faculties(request, num)
         messages.info(request, 'Data submitted succesfully')
-        if admin_request:
-            return render(request, 'admin-panel.html')
-        else:
-            return render(request, 'faculty-panel.html')
-
-def newsletter_header(request):
-    academic_year = request.POST['acadyr']
-    volume = request.POST['volume']
-    department_image = request.FILES.get('dept-img',None)
-    editorial_desk = request.POST['editorial-desk']
-    if academic_year != '' or volume != '' or department_image is not None or editorial_desk != '':
-        admin_request = True
-        newsletter_header = Header(academic_year=academic_year, volume=volume, department_image=department_image, editorial_desk=editorial_desk)
-        newsletter_header.save()
+        return render(request, 'faculty-panel.html')
 
 def faculty_highlights(request, num):
     for x in range(int(num[0])+1):

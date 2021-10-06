@@ -45,6 +45,9 @@
             <section id="contact" class="contact section-bg">
                 <div class="container">
                     <nav>
+                        {% for message in messages %}
+                                        <h3 align="center"></center><font color="green">{{message}}</font></h3>
+                        {% endfor %}
                         <div class="nav nav-tabs" id="nav-tab" role="tablist">
                             <button class="nav-link active" id="view-submissions-tab" data-bs-toggle="tab" data-bs-target="#view-submissions" type="button" role="tab" aria-controls="view-submissions" aria-selected="true">View Submissions</button>
                             <button class="nav-link" id="add-content-tab" data-bs-toggle="tab" data-bs-target="#add-content" type="button" role="tab" aria-controls="add-content" aria-selected="false">Add Content</button>
@@ -63,9 +66,9 @@
                                         <div class="accordion-body">
                                             <nav>
                                                 <div class="nav nav-tabs" id="nav-tab" role="tablist">
-                                                  <button class="nav-link active" id="highlights1-tab" data-bs-toggle="tab" data-bs-target="#highlights1" type="button" role="tab">Teacher#1</button>
-                                                  <button class="nav-link" id="highlights2-tab" data-bs-toggle="tab" data-bs-target="#highlights2" type="button" role="tab">Teacher#2</button>
-                                                  <button class="nav-link" id="highlights3-tab" data-bs-toggle="tab" data-bs-target="#highlights3" type="button" role="tab">Teacher#3</button>
+                                                    {% for i in total_highlights %}
+                                                    <button class="nav-link active" id="{{'highlights-tab'+i}}" data-bs-toggle="tab" data-bs-target="{{'#highlights'+i}}" type="button" role="tab">{{}}</button>
+                                                    {% end for %}
                                                 </div>
                                             </nav>
                                             <div class="tab-content" id="nav-tabContent">
@@ -244,7 +247,7 @@
                             <div class="container text-center contact" style="background-color: white;">
                                 <section class="contact">
                                     <!-- <h2 class="page-title">ADD NEWSLETTER CONTENT</h2> -->
-                                    <form method="post" action="{% url 'submit-data' %}" name="data_send" enctype="multipart/form-data">
+                                    <form method="post" action="{% url 'admin-submit-data' %}" name="data_send" enctype="multipart/form-data">
                                         {% csrf_token %}
                                         <div class="form-fields">
                                             <fieldset id="newsletter-header">

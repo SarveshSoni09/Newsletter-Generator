@@ -31,7 +31,9 @@ urlpatterns = [
     path('logout', logv.logout, name='logout'),
     path('admin-panel', logv.login, name='admin-panel'),
     path('faculty-panel', logv.login, name='faculty-panel'),
-    path('data-submitted', facv.submit_data, name='submit-data')
+    path('faculty-data-submitted', facv.submit_data, name='faculty-submit-data'),
+    path('admin-data-submitted', admv.submit_data, name='admin-submit-data')
+
 
 ]
 

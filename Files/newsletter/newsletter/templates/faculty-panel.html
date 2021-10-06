@@ -49,7 +49,7 @@
                     {% for message in messages %}
                             <h3><font color="green">{{message}}</font></h3>
                         {% endfor %}
-                    <form method="post" action="{% url 'submit-data' %}" name="data_send" enctype="multipart/form-data">
+                    <form method="post" action="{% url 'faculty-submit-data' %}" name="data_send" enctype="multipart/form-data">
                         {% csrf_token %}
                         <div class="form-fields">
                             <fieldset id="highlights-field">
