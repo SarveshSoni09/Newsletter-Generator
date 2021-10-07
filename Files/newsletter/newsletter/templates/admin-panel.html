@@ -55,7 +55,9 @@
                       </nav>
                       <div class="tab-content" id="nav-tabContent">
                         <div class="tab-pane fade show active" id="view-submissions" role="tabpanel" aria-labelledby="view-submissions-tab">
+                            
                             <div class="accordion" id="accordionExample" style="background: white;">
+                                
                                 <div class="accordion-item">
                                     <h2 class="accordion-header" id="headingOne">
                                         <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
@@ -67,15 +69,17 @@
                                             <nav>
                                                 <div class="nav nav-tabs" id="nav-tab" role="tablist">
                                                     
-                                                    {% for i in total_highlights %}
-                                                    <button class="nav-link active" id="highlights{{i.id}}-tab" data-bs-toggle="tab" data-bs-target="#highlights{{i.id}}" type="button" role="tab">{{i.faculty_name}}</button>
-                                                    
+                                                    {% for i in all_data.0 %}
+                                                    <button class="nav-link" id="highlights{{i.id}}-tab" data-bs-toggle="tab" data-bs-target="#highlights{{i.id}}" type="button" role="tab">{{i.faculty_name}}</button>
                                                     {% endfor %}
                                                 </div>
                                             </nav>
                                             <div class="tab-content" id="nav-tabContent">
-                                                {% for i in total_highlights %}
-                                                <div class="tab-pane teacher-content fade show active" id="highlights{{i.id}}" role="tabpanel">{{i.achievement}}</div>
+                                                {% for i in all_data.0 %}
+                                                <div class="tab-pane teacher-content fade" id="highlights{{i.id}}" role="tabpanel">{{i.achievement}}
+                                                {% if i.image %}
+                                                <img src = "media/{{i.image}}" height="100px" width="100px"/></div>
+                                                {% endif %}</div>
                                                 {% endfor %}
                                             </div>                                        
                                         </div>
@@ -83,6 +87,7 @@
                                 </div>
                                 <div class="accordion-item">
                                     <h2 class="accordion-header" id="headingTwo">
+                                        
                                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#remarkableMilestones" aria-expanded="false" aria-controls="collapseTwo">
                                             Remarkable Milestones
                                         </button>
@@ -91,15 +96,18 @@
                                         <div class="accordion-body">
                                             <nav>
                                                 <div class="nav nav-tabs" id="nav-tab" role="tablist">
-                                                  <button class="nav-link active" id="milestones1-tab" data-bs-toggle="tab" data-bs-target="#milestones1" type="button" role="tab">Teacher#1</button>
-                                                  <button class="nav-link" id="milestones2-tab" data-bs-toggle="tab" data-bs-target="#milestones2" type="button" role="tab">Teacher#2</button>
-                                                  <button class="nav-link" id="milestones3-tab" data-bs-toggle="tab" data-bs-target="#milestones3" type="button" role="tab">Teacher#3</button>
+                                                    {% for i in all_data.1 %}
+                                                  <button class="nav-link" id="milestones{{i.id}}" data-bs-toggle="tab" data-bs-target="#milestones{{i.id}}" type="button" role="tab">Submission {{i.id}}</button>
+                                                    {% endfor %}
                                                 </div>
                                             </nav>
                                             <div class="tab-content" id="nav-tabContent">
-                                                <div class="tab-pane teacher-content fade show active" id="milestones1" role="tabpanel">1</div>
-                                                <div class="tab-pane teacher-content fade" id="milestones2" role="tabpanel">2</div>
-                                                <div class="tab-pane teacher-content fade" id="milestones3" role="tabpanel">3</div>
+                                                {% for i in all_data.1 %}
+                                                <div class="tab-pane teacher-content fade" id="milestones{{i.id}}" role="tabpanel">{{i.description}}
+                                                {% if i.image %}
+                                                <img src = "media/{{i.image}}" height="100px" width="100px"/></div>
+                                                {% endif %}</div>
+                                                {% endfor %}
                                             </div>
                                         </div>
                                     </div>

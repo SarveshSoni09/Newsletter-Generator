@@ -20,10 +20,9 @@ def submit_data(request):
         # events_faculties(request, num)
         # project_companies(request, num)
         # phd_faculties(request, num)
-        total_highlights = get_data()
-        print(total_highlights)
+        all_data = get_data()
         # messages.info(request, 'Data submitted succesfully')
-        return render(request, 'admin-panel.html', {'total_highlights':total_highlights})
+        return render(request, 'admin-panel.html', {'all_data' : all_data})
 
 def newsletter_header(request):
     academic_year = request.POST['acadyr']
@@ -101,7 +100,14 @@ def phd_faculties(request, num):
 
 
 def get_data():
-    total_highlights = Highlights.objects.values()
-    
-    return total_highlights
+    highlights = Highlights.objects.values()
+    milestones = Milestones.objects.values()
+    activities = Activities.objects.values()
+    placements = Placements.objects.values()
+    students = Students.objects.values()
+    events = Events.objects.values()
+    projects = Projects.objects.values()
+    phds = Projects.objects.values()
+    all_data = [highlights, milestones, activities, placements, students, events, projects, phds]
+    return all_data
         
