@@ -66,15 +66,17 @@
                                         <div class="accordion-body">
                                             <nav>
                                                 <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                                                    
                                                     {% for i in total_highlights %}
-                                                    <button class="nav-link active" id="{{'highlights-tab'+i}}" data-bs-toggle="tab" data-bs-target="{{'#highlights'+i}}" type="button" role="tab">{{}}</button>
-                                                    {% end for %}
+                                                    <button class="nav-link active" id="highlights{{i.id}}-tab" data-bs-toggle="tab" data-bs-target="#highlights{{i.id}}" type="button" role="tab">{{i.faculty_name}}</button>
+                                                    
+                                                    {% endfor %}
                                                 </div>
                                             </nav>
                                             <div class="tab-content" id="nav-tabContent">
-                                                <div class="tab-pane teacher-content fade show active" id="highlights1" role="tabpanel">1</div>
-                                                <div class="tab-pane teacher-content fade" id="highlights2" role="tabpanel">2</div>
-                                                <div class="tab-pane teacher-content fade" id="highlights3" role="tabpanel">3</div>
+                                                {% for i in total_highlights %}
+                                                <div class="tab-pane teacher-content fade show active" id="highlights{{i.id}}" role="tabpanel">{{i.achievement}}</div>
+                                                {% endfor %}
                                             </div>                                        
                                         </div>
                                     </div>
