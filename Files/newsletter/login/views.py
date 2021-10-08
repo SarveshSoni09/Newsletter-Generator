@@ -1,12 +1,15 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.contrib.auth.forms import UserCreationForm
-from django.contrib.auth.models import User, auth 
+from django.contrib.auth.models import User, auth
+
+from admin_panel.views import get_data 
 # Create your views here.
 
 
 def login(request):
-                return render(request, 'admin-panel.html')
+                all_data = get_data()
+                return render(request, 'admin-panel.html', {'all_data' : all_data})
 
     # if request.method == 'POST':
     #     email = request.POST['email']

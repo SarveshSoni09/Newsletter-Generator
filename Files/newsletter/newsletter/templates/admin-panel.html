@@ -54,7 +54,7 @@
                         </div>
                       </nav>
                       <div class="tab-content" id="nav-tabContent">
-                        <div class="tab-pane fade show active" id="view-submissions" role="tabpanel" aria-labelledby="view-submissions-tab">
+                        <div class="tab-pane fade active show" id="view-submissions" role="tabpanel" aria-labelledby="view-submissions-tab">
                             
                             <div class="accordion" id="accordionExample" style="background: white;">
                                 
@@ -76,10 +76,12 @@
                                             </nav>
                                             <div class="tab-content" id="nav-tabContent">
                                                 {% for i in all_data.0 %}
-                                                <div class="tab-pane teacher-content fade" id="highlights{{i.id}}" role="tabpanel">{{i.achievement}}
+                                                <div class="tab-pane teacher-content fade" id="highlights{{i.id}}" role="tabpanel">{{i.achievement}}<br/>
                                                 {% if i.image %}
                                                 <img src = "media/{{i.image}}" height="100px" width="100px"/></div>
-                                                {% endif %}</div>
+                                                {% else %}
+                                                        </div>
+                                                {% endif %}
                                                 {% endfor %}
                                             </div>                                        
                                         </div>
@@ -95,18 +97,20 @@
                                     <div id="remarkableMilestones" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
                                         <div class="accordion-body">
                                             <nav>
-                                                <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                                                <div class="nav nav-tabs" id="nav-tab2" role="tablist">
                                                     {% for i in all_data.1 %}
-                                                  <button class="nav-link" id="milestones{{i.id}}" data-bs-toggle="tab" data-bs-target="#milestones{{i.id}}" type="button" role="tab">Submission {{i.id}}</button>
+                                                  <button class="nav-link" id="milestones{{i.id}}-tab" data-bs-toggle="tab" data-bs-target="#milestones{{i.id}}" type="button" role="tab">Submission {{i.id}}</button>
                                                     {% endfor %}
                                                 </div>
                                             </nav>
                                             <div class="tab-content" id="nav-tabContent">
                                                 {% for i in all_data.1 %}
-                                                <div class="tab-pane teacher-content fade" id="milestones{{i.id}}" role="tabpanel">{{i.description}}
-                                                {% if i.image %}
-                                                <img src = "media/{{i.image}}" height="100px" width="100px"/></div>
-                                                {% endif %}</div>
+                                                    <div class="tab-pane teacher-content fade" id="milestones{{i.id}}" role="tabpanel">{{i.description}}<br/>
+                                                    {% if i.image %}
+                                                        <img src = "media/{{i.image}}" height="100px" width="100px"/></div>
+                                                    {% else %}
+                                                        </div>
+                                                    {% endif %}
                                                 {% endfor %}
                                             </div>
                                         </div>
@@ -122,15 +126,19 @@
                                         <div class="accordion-body">
                                             <nav>
                                                 <div class="nav nav-tabs" id="nav-tab" role="tablist">
-                                                  <button class="nav-link active" id="activities1-tab" data-bs-toggle="tab" data-bs-target="#activities1" type="button" role="tab">Teacher#1</button>
-                                                  <button class="nav-link" id="activities2-tab" data-bs-toggle="tab" data-bs-target="#activities2" type="button" role="tab">Teacher#2</button>
-                                                  <button class="nav-link" id="activities3-tab" data-bs-toggle="tab" data-bs-target="#activities3" type="button" role="tab">Teacher#3</button>
+                                                    {% for i in all_data.2 %}
+                                                  <button class="nav-link" id="activities{{i.id}}-tab" data-bs-toggle="tab" data-bs-target="#activities{{i.id}}" type="button" role="tab">Submission {{i.id}}</button>
+                                                    {% endfor %}
                                                 </div>
                                             </nav>
                                             <div class="tab-content" id="nav-tabContent">
-                                                <div class="tab-pane teacher-content fade show active" id="activities1" role="tabpanel">1</div>
-                                                <div class="tab-pane teacher-content fade" id="activities2" role="tabpanel">2</div>
-                                                <div class="tab-pane teacher-content fade" id="activities3" role="tabpanel">3</div>
+                                                {% for i in all_data.2 %}
+                                                <div class="tab-pane teacher-content fade" id="activities{{i.id}}" role="tabpanel">{{i.description}}<br/>
+                                                {% if i.image %}
+                                                <img src = "media/{{i.image}}" height="100px" width="100px"/><br/>
+                                                {% endif %}
+                                                {{i.caption}}</div>
+                                                {% endfor %}
                                             </div>
                                         </div>
                                     </div>
@@ -145,15 +153,15 @@
                                         <div class="accordion-body">
                                             <nav>
                                                 <div class="nav nav-tabs" id="nav-tab" role="tablist">
-                                                  <button class="nav-link active" id="stats1-tab" data-bs-toggle="tab" data-bs-target="#stats1" type="button" role="tab">Teacher#1</button>
-                                                  <button class="nav-link" id="stats2-tab" data-bs-toggle="tab" data-bs-target="#stats2" type="button" role="tab">Teacher#2</button>
-                                                  <button class="nav-link" id="stats3-tab" data-bs-toggle="tab" data-bs-target="#stats3" type="button" role="tab">Teacher#3</button>
+                                                    {% for i in all_data.3 %}
+                                                  <button class="nav-link" id="stats{{i.id}}-tab" data-bs-toggle="tab" data-bs-target="#stats{{i.id}}" type="button" role="tab">{{i.company}}</button>
+                                                  {% endfor %}
                                                 </div>
                                             </nav>
                                             <div class="tab-content" id="nav-tabContent">
-                                                <div class="tab-pane teacher-content fade show active" id="stats1" role="tabpanel">1</div>
-                                                <div class="tab-pane teacher-content fade" id="stats2" role="tabpanel">2</div>
-                                                <div class="tab-pane teacher-content fade" id="stats3" role="tabpanel">3</div>
+                                                {% for i in all_data.3 %}
+                                                <div class="tab-pane teacher-content fade" id="stats{{i.id}}" role="tabpanel">Students placed: {{i.number}}</div>
+                                                {% endfor %}
                                             </div>
                                         </div>
                                     </div>
@@ -168,15 +176,19 @@
                                         <div class="accordion-body">
                                             <nav>
                                                 <div class="nav nav-tabs" id="nav-tab" role="tablist">
-                                                  <button class="nav-link active" id="achievements1-tab" data-bs-toggle="tab" data-bs-target="#achievements1" type="button" role="tab">Teacher#1</button>
-                                                  <button class="nav-link" id="achievements2-tab" data-bs-toggle="tab" data-bs-target="#achievements2" type="button" role="tab">Teacher#2</button>
-                                                  <button class="nav-link" id="achievements3-tab" data-bs-toggle="tab" data-bs-target="#achievements3" type="button" role="tab">Teacher#3</button>
+                                                    {% for i in all_data.4 %}
+                                                  <button class="nav-link" id="achievements{{i.id}}-tab" data-bs-toggle="tab" data-bs-target="#achievements{{i.id}}" type="button" role="tab">Submission {{i.id}}</button>
+                                                    {% endfor %}
                                                 </div>
                                             </nav>
                                             <div class="tab-content" id="nav-tabContent">
-                                                <div class="tab-pane teacher-content fade show active" id="achievements1" role="tabpanel">1</div>
-                                                <div class="tab-pane teacher-content fade" id="achievements2" role="tabpanel">2</div>
-                                                <div class="tab-pane teacher-content fade" id="achievements3" role="tabpanel">3</div>
+                                                {% for i in all_data.4 %}
+                                                <div class="tab-pane teacher-content fade" id="achievements{{i.id}}" role="tabpanel">{{i.description}}<br/>
+                                                {% if i.image %}
+                                                <img src = "media/{{i.image}}" height="100px" width="100px"/>
+                                                {% endif %}</div>
+                                                {% endfor %}
+                                            
                                             </div>
                                         </div>
                                     </div>
@@ -191,16 +203,18 @@
                                         <div class="accordion-body">
                                             <nav>
                                                 <div class="nav nav-tabs" id="nav-tab" role="tablist">
-                                                  <button class="nav-link active" id="events1-tab" data-bs-toggle="tab" data-bs-target="#events1" type="button" role="tab">Teacher#1</button>
-                                                  <button class="nav-link" id="events2-tab" data-bs-toggle="tab" data-bs-target="#events2" type="button" role="tab">Teacher#2</button>
-                                                  <button class="nav-link" id="events3-tab" data-bs-toggle="tab" data-bs-target="#events3" type="button" role="tab">Teacher#3</button>
+                                                    {% for i in all_data.5 %}
+                                                  <button class="nav-link" id="events{{i.id}}-tab" data-bs-toggle="tab" data-bs-target="#events{{i.id}}" type="button" role="tab">Submission {{i.id}}</button>
+                                                    {% endfor %}
                                                 </div>
                                             </nav>
                                             <div class="tab-content" id="nav-tabContent">
-                                                <div class="tab-pane teacher-content fade show active" id="events1" role="tabpanel">1</div>
-                                                <div class="tab-pane teacher-content fade" id="events2" role="tabpanel">2</div>
-                                                <div class="tab-pane teacher-content fade" id="events3" role="tabpanel">3</div>
-                                            </div>
+                                                {% for i in all_data.5 %}
+                                                <div class="tab-pane teacher-content fade" id="events{{i.id}}" role="tabpanel">{{i.description}}<br/>
+                                                {% if i.image %}
+                                                <img src = "media/{{i.image}}" height="100px" width="100px"/>
+                                                {% endif %}</div>
+                                                {% endfor %}
                                         </div>
                                     </div>
                                 </div>
@@ -214,15 +228,16 @@
                                         <div class="accordion-body">
                                             <nav>
                                                 <div class="nav nav-tabs" id="nav-tab" role="tablist">
-                                                  <button class="nav-link active" id="projects1-tab" data-bs-toggle="tab" data-bs-target="#projects1" type="button" role="tab">Teacher#1</button>
-                                                  <button class="nav-link" id="projects2-tab" data-bs-toggle="tab" data-bs-target="#projects2" type="button" role="tab">Teacher#2</button>
-                                                  <button class="nav-link" id="projects3-tab" data-bs-toggle="tab" data-bs-target="#projects3" type="button" role="tab">Teacher#3</button>
+                                                    {% for i in all_data.6 %}
+                                                  <button class="nav-link" id="projects{{i.id}}-tab" data-bs-toggle="tab" data-bs-target="#projects{{i.id}}" type="button" role="tab">Submission {{i.id}}</button>
+                                                    {% endfor %}
                                                 </div>
                                             </nav>
                                             <div class="tab-content" id="nav-tabContent">
-                                                <div class="tab-pane teacher-content fade show active" id="projects1" role="tabpanel">1</div>
-                                                <div class="tab-pane teacher-content fade" id="projects2" role="tabpanel">2</div>
-                                                <div class="tab-pane teacher-content fade" id="projects3" role="tabpanel">3</div>
+                                                {% for i in all_data.6 %}
+                                                <div class="tab-pane teacher-content fade" id="projects{{i.id}}" role="tabpanel">{{i.description}}</div>
+                                                {% endfor %}
+                                                
                                             </div>
                                         </div>
                                     </div>
@@ -237,15 +252,15 @@
                                         <div class="accordion-body">
                                             <nav>
                                                 <div class="nav nav-tabs" id="nav-tab" role="tablist">
-                                                  <button class="nav-link active" id="phd1-tab" data-bs-toggle="tab" data-bs-target="#phd1" type="button" role="tab">Teacher#1</button>
-                                                  <button class="nav-link" id="phd2-tab" data-bs-toggle="tab" data-bs-target="#phd2" type="button" role="tab">Teacher#2</button>
-                                                  <button class="nav-link" id="phd3-tab" data-bs-toggle="tab" data-bs-target="#phd3" type="button" role="tab">Teacher#3</button>
+                                                    {% for i in all_data.7 %}
+                                                  <button class="nav-link" id="phd{{i.id}}-tab" data-bs-toggle="tab" data-bs-target="#phd{{i.id}}" type="button" role="tab">Submission {{i.id}}</button>
+                                                    {% endfor %}
                                                 </div>
                                             </nav>
                                             <div class="tab-content" id="nav-tabContent">
-                                                <div class="tab-pane teacher-content fade show active" id="phd1" role="tabpanel">1</div>
-                                                <div class="tab-pane teacher-content fade" id="phd2" role="tabpanel">2</div>
-                                                <div class="tab-pane teacher-content fade" id="phd3" role="tabpanel">3</div>
+                                                {% for i in all_data.7 %}
+                                                <div class="tab-pane teacher-content fade" id="phd{{i.id}}" role="tabpanel">{{i.description}}</div>
+                                                {% endfor %}
                                             </div>
                                         </div>
                                     </div>
@@ -253,6 +268,7 @@
                             </div>
                         </div>
 
+                        <!-- NEWSLETTER CONTENT ADDING TAB-->
                         <div class="tab-pane fade" id="add-content" role="tabpanel" aria-labelledby="add-content-tab">
                             <div class="container text-center contact" style="background-color: white;">
                                 <section class="contact">
