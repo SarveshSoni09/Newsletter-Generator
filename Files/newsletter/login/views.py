@@ -8,8 +8,8 @@ from admin_panel.views import get_data
 
 
 def login(request):
-                all_data = get_data()
-                return render(request, 'admin-panel.html', {'all_data' : all_data})
+    all_data = get_data()
+    return render(request, 'admin-panel.html', {'all_data' : all_data})
 
     # if request.method == 'POST':
     #     email = request.POST['email']
@@ -19,7 +19,7 @@ def login(request):
     #         if user.is_superuser:
     #             auth.login(request, user)
     #             # return redirect('admin-panel')
-    #             return render(request, 'admin-panel.html')
+    #             return render(request, 'admin-panel.html', {'all_data' : all_data})
     #         else:
     #             auth.login(request, user)
     #             # return redirect('faculty-panel')

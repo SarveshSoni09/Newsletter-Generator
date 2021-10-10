@@ -57,6 +57,7 @@
                         <div class="tab-pane fade active show" id="view-submissions" role="tabpanel" aria-labelledby="view-submissions-tab">
                             
                             <div class="accordion" id="accordionExample" style="background: white;">
+                        <form method="GET" action="{% url 'download' %}" name="download">
                                 
                                 <div class="accordion-item">
                                     <h2 class="accordion-header" id="headingOne">
@@ -70,7 +71,11 @@
                                                 <div class="nav nav-tabs" id="nav-tab" role="tablist">
                                                     
                                                     {% for i in all_data.0 %}
-                                                    <button class="nav-link" id="highlights{{i.id}}-tab" data-bs-toggle="tab" data-bs-target="#highlights{{i.id}}" type="button" role="tab">{{i.faculty_name}}</button>
+
+                                                    <button class="nav-link" id="highlights{{i.id}}-tab" data-bs-toggle="tab" data-bs-target="#highlights{{i.id}}" type="button" role="tab">{{i.faculty_name}}
+                                                    <div class="form-check form-switch">
+                                                        <input type="checkbox" class="form-check-input" name = "highlights{{i.id}}-check" id="highlights{{i.id}}-check"/></div>
+                                                    </button>
                                                     {% endfor %}
                                                 </div>
                                             </nav>
@@ -99,8 +104,10 @@
                                             <nav>
                                                 <div class="nav nav-tabs" id="nav-tab2" role="tablist">
                                                     {% for i in all_data.1 %}
-                                                  <button class="nav-link" id="milestones{{i.id}}-tab" data-bs-toggle="tab" data-bs-target="#milestones{{i.id}}" type="button" role="tab">Submission {{i.id}}</button>
-                                                    {% endfor %}
+                                                  <button class="nav-link" id="milestones{{i.id}}-tab" data-bs-toggle="tab" data-bs-target="#milestones{{i.id}}" type="button" role="tab">Submission {{i.id}}
+                                                  <div class="form-check form-switch">
+                                                    <input type="checkbox" class="form-check-input" id="highlights{{i.id}}-check"/></div></button>
+                                                  {% endfor %}
                                                 </div>
                                             </nav>
                                             <div class="tab-content" id="nav-tabContent">
@@ -127,8 +134,10 @@
                                             <nav>
                                                 <div class="nav nav-tabs" id="nav-tab" role="tablist">
                                                     {% for i in all_data.2 %}
-                                                  <button class="nav-link" id="activities{{i.id}}-tab" data-bs-toggle="tab" data-bs-target="#activities{{i.id}}" type="button" role="tab">Submission {{i.id}}</button>
-                                                    {% endfor %}
+                                                  <button class="nav-link" id="activities{{i.id}}-tab" data-bs-toggle="tab" data-bs-target="#activities{{i.id}}" type="button" role="tab">Submission {{i.id}}
+                                                  <div class="form-check form-switch">
+                                                    <input type="checkbox" class="form-check-input" id="highlights{{i.id}}-check"/></div></button> 
+                                                  {% endfor %}
                                                 </div>
                                             </nav>
                                             <div class="tab-content" id="nav-tabContent">
@@ -154,7 +163,9 @@
                                             <nav>
                                                 <div class="nav nav-tabs" id="nav-tab" role="tablist">
                                                     {% for i in all_data.3 %}
-                                                  <button class="nav-link" id="stats{{i.id}}-tab" data-bs-toggle="tab" data-bs-target="#stats{{i.id}}" type="button" role="tab">{{i.company}}</button>
+                                                  <button class="nav-link" id="stats{{i.id}}-tab" data-bs-toggle="tab" data-bs-target="#stats{{i.id}}" type="button" role="tab">{{i.company}}
+                                                  <div class="form-check form-switch">
+                                                    <input type="checkbox" class="form-check-input" id="highlights{{i.id}}-check"/></div></button>
                                                   {% endfor %}
                                                 </div>
                                             </nav>
@@ -177,8 +188,10 @@
                                             <nav>
                                                 <div class="nav nav-tabs" id="nav-tab" role="tablist">
                                                     {% for i in all_data.4 %}
-                                                  <button class="nav-link" id="achievements{{i.id}}-tab" data-bs-toggle="tab" data-bs-target="#achievements{{i.id}}" type="button" role="tab">Submission {{i.id}}</button>
-                                                    {% endfor %}
+                                                  <button class="nav-link" id="achievements{{i.id}}-tab" data-bs-toggle="tab" data-bs-target="#achievements{{i.id}}" type="button" role="tab">Submission {{i.id}}
+                                                  <div class="form-check form-switch">
+                                                    <input type="checkbox" class="form-check-input" id="highlights{{i.id}}-check"/></div></button> 
+                                                  {% endfor %}
                                                 </div>
                                             </nav>
                                             <div class="tab-content" id="nav-tabContent">
@@ -204,8 +217,10 @@
                                             <nav>
                                                 <div class="nav nav-tabs" id="nav-tab" role="tablist">
                                                     {% for i in all_data.5 %}
-                                                  <button class="nav-link" id="events{{i.id}}-tab" data-bs-toggle="tab" data-bs-target="#events{{i.id}}" type="button" role="tab">Submission {{i.id}}</button>
-                                                    {% endfor %}
+                                                  <button class="nav-link" id="events{{i.id}}-tab" data-bs-toggle="tab" data-bs-target="#events{{i.id}}" type="button" role="tab">Submission {{i.id}}
+                                                  <div class="form-check form-switch">
+                                                    <input type="checkbox" class="form-check-input" id="highlights{{i.id}}-check"/></div></button>
+                                                  {% endfor %}
                                                 </div>
                                             </nav>
                                             <div class="tab-content" id="nav-tabContent">
@@ -229,8 +244,10 @@
                                             <nav>
                                                 <div class="nav nav-tabs" id="nav-tab" role="tablist">
                                                     {% for i in all_data.6 %}
-                                                  <button class="nav-link" id="projects{{i.id}}-tab" data-bs-toggle="tab" data-bs-target="#projects{{i.id}}" type="button" role="tab">Submission {{i.id}}</button>
-                                                    {% endfor %}
+                                                  <button class="nav-link" id="projects{{i.id}}-tab" data-bs-toggle="tab" data-bs-target="#projects{{i.id}}" type="button" role="tab">Submission {{i.id}}
+                                                  <div class="form-check form-switch">
+                                                    <input type="checkbox" class="form-check-input" id="highlights{{i.id}}-check"/></div> </button>
+                                                  {% endfor %}
                                                 </div>
                                             </nav>
                                             <div class="tab-content" id="nav-tabContent">
@@ -253,8 +270,10 @@
                                             <nav>
                                                 <div class="nav nav-tabs" id="nav-tab" role="tablist">
                                                     {% for i in all_data.7 %}
-                                                  <button class="nav-link" id="phd{{i.id}}-tab" data-bs-toggle="tab" data-bs-target="#phd{{i.id}}" type="button" role="tab">Submission {{i.id}}</button>
-                                                    {% endfor %}
+                                                  <button class="nav-link" id="phd{{i.id}}-tab" data-bs-toggle="tab" data-bs-target="#phd{{i.id}}" type="button" role="tab">Submission {{i.id}}
+                                                  <div class="form-check form-switch">
+                                                    <input type="checkbox" class="form-check-input" id="highlights{{i.id}}-check"/></div></button> 
+                                                  {% endfor %}
                                                 </div>
                                             </nav>
                                             <div class="tab-content" id="nav-tabContent">
@@ -267,6 +286,11 @@
                                 </div>
                             </div>
                         </div>
+                        {% csrf_token %}
+                        <button class="add-more" id="pdf" type="submit">Download PDF</button>
+                        <button class="add-more" id="word" type="submit">Download Word</button>
+                        </form><br/>
+
 
                         <!-- NEWSLETTER CONTENT ADDING TAB-->
                         <div class="tab-pane fade" id="add-content" role="tabpanel" aria-labelledby="add-content-tab">
