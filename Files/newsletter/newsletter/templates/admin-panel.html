@@ -106,7 +106,7 @@
                                                     {% for i in all_data.1 %}
                                                   <button class="nav-link" id="milestones{{i.id}}-tab" data-bs-toggle="tab" data-bs-target="#milestones{{i.id}}" type="button" role="tab">Submission {{i.id}}
                                                   <div class="form-check form-switch">
-                                                    <input type="checkbox" class="form-check-input" id="highlights{{i.id}}-check"/></div></button>
+                                                    <input type="checkbox" class="form-check-input" id="milestones{{i.id}}-check" name="milestones{{i.id}}-check"/></div></button>
                                                   {% endfor %}
                                                 </div>
                                             </nav>
@@ -136,7 +136,7 @@
                                                     {% for i in all_data.2 %}
                                                   <button class="nav-link" id="activities{{i.id}}-tab" data-bs-toggle="tab" data-bs-target="#activities{{i.id}}" type="button" role="tab">Submission {{i.id}}
                                                   <div class="form-check form-switch">
-                                                    <input type="checkbox" class="form-check-input" id="highlights{{i.id}}-check"/></div></button> 
+                                                    <input type="checkbox" class="form-check-input" id="activities{{i.id}}-check" name="activities{{i.id}}-check"/></div></button> 
                                                   {% endfor %}
                                                 </div>
                                             </nav>
@@ -165,7 +165,7 @@
                                                     {% for i in all_data.3 %}
                                                   <button class="nav-link" id="stats{{i.id}}-tab" data-bs-toggle="tab" data-bs-target="#stats{{i.id}}" type="button" role="tab">{{i.company}}
                                                   <div class="form-check form-switch">
-                                                    <input type="checkbox" class="form-check-input" id="highlights{{i.id}}-check"/></div></button>
+                                                    <input type="checkbox" class="form-check-input" id="placements{{i.id}}-check" name="placements{{i.id}}-check"/></div></button>
                                                   {% endfor %}
                                                 </div>
                                             </nav>
@@ -190,7 +190,7 @@
                                                     {% for i in all_data.4 %}
                                                   <button class="nav-link" id="achievements{{i.id}}-tab" data-bs-toggle="tab" data-bs-target="#achievements{{i.id}}" type="button" role="tab">Submission {{i.id}}
                                                   <div class="form-check form-switch">
-                                                    <input type="checkbox" class="form-check-input" id="highlights{{i.id}}-check"/></div></button> 
+                                                    <input type="checkbox" class="form-check-input" id="students{{i.id}}-check" name="students{{i.id}}-check"/></div></button> 
                                                   {% endfor %}
                                                 </div>
                                             </nav>
@@ -219,7 +219,7 @@
                                                     {% for i in all_data.5 %}
                                                   <button class="nav-link" id="events{{i.id}}-tab" data-bs-toggle="tab" data-bs-target="#events{{i.id}}" type="button" role="tab">Submission {{i.id}}
                                                   <div class="form-check form-switch">
-                                                    <input type="checkbox" class="form-check-input" id="highlights{{i.id}}-check"/></div></button>
+                                                    <input type="checkbox" class="form-check-input" id="events{{i.id}}-check" name="events{{i.id}}-check" /></div></button>
                                                   {% endfor %}
                                                 </div>
                                             </nav>
@@ -246,7 +246,7 @@
                                                     {% for i in all_data.6 %}
                                                   <button class="nav-link" id="projects{{i.id}}-tab" data-bs-toggle="tab" data-bs-target="#projects{{i.id}}" type="button" role="tab">Submission {{i.id}}
                                                   <div class="form-check form-switch">
-                                                    <input type="checkbox" class="form-check-input" id="highlights{{i.id}}-check"/></div> </button>
+                                                    <input type="checkbox" class="form-check-input" id="projects{{i.id}}-check" name="projects{{i.id}}-check"/></div> </button>
                                                   {% endfor %}
                                                 </div>
                                             </nav>
@@ -272,7 +272,7 @@
                                                     {% for i in all_data.7 %}
                                                   <button class="nav-link" id="phd{{i.id}}-tab" data-bs-toggle="tab" data-bs-target="#phd{{i.id}}" type="button" role="tab">Submission {{i.id}}
                                                   <div class="form-check form-switch">
-                                                    <input type="checkbox" class="form-check-input" id="highlights{{i.id}}-check"/></div></button> 
+                                                    <input type="checkbox" class="form-check-input" id="phds{{i.id}}-check" name="phds{{i.id}}-check"/></div></button> 
                                                   {% endfor %}
                                                 </div>
                                             </nav>
