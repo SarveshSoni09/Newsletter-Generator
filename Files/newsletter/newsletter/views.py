@@ -109,3 +109,5 @@ def get_phds(request, phds):
         if 'phds'+str(i)+'-check' in request.GET:
             phd_desc.append(Phd.objects.get(pk=i).description)
     print(phd_desc)
+
+

@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'login',
     'admin_panel',
     'faculty_panel',
+    'script',
 ]
 
 MIDDLEWARE = [

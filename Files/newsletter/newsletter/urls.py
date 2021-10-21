@@ -23,6 +23,7 @@ from newsletter import views
 from django.conf import settings
 from django.conf.urls.static import static
 import random
+from script import views as scriptv
 
 randnum = random.randrange(99999)
 
@@ -36,7 +37,9 @@ urlpatterns = [
     path('faculty-panel', logv.login, name='faculty-panel'),
     path('faculty-data-submitted', facv.submit_data, name='faculty-submit-data'),
     path('admin-data-submitted', admv.submit_data, name='admin-submit-data'),
-    path('download-doc-'+str(randnum), views.download_doc, name='download'),
+    # path('download-doc-'+str(randnum), views.download_doc, name='download'),
+    path('download-doc-'+str(randnum), scriptv.newsletter, name='download'),
+
 
 
 ]
