@@ -34,7 +34,7 @@ def get_highlights(request, highlights):
             faculty_name.append(Highlights.objects.get(pk=i).faculty_name)
             achievement.append(Highlights.objects.get(pk=i).achievement)
             images.append(Highlights.objects.get(pk=i).image)
-    print(faculty_name, achievement, images)
+    return faculty_name, achievement, images
 
 def get_milestones(request, milestones):
     milestone_desc = []
@@ -45,7 +45,7 @@ def get_milestones(request, milestones):
         if 'milestones'+str(i)+'-check' in request.GET:
             milestone_desc.append(Milestones.objects.get(pk=i).description)
             images.append(Milestones.objects.get(pk=i).image)
-    print(milestone_desc, images)
+    return milestone_desc, images
 
 def get_activities(request, activities):
     activity_desc = []
@@ -56,7 +56,7 @@ def get_activities(request, activities):
         if 'activities'+str(i)+'-check' in request.GET:
             activity_desc.append(Activities.objects.get(pk=i).description)
             images.append(Activities.objects.get(pk=i).image)
-    print(activity_desc, images)
+    return activity_desc, images
 
 def get_placements(request, placements):
     companies = []

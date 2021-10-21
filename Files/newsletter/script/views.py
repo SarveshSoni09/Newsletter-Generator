@@ -12,6 +12,8 @@ import matplotlib.pyplot as plt
 import lxml
 from docx.enum.table import WD_ALIGN_VERTICAL
 from admin_panel.models import Header
+from newsletter.views import *
+from faculty_panel.models import *
 
 
 # Red Shade: #A93639
@@ -177,11 +179,11 @@ def newsletter(request):
             run = paragraph.add_run(self.heading)
             blue_head.apply_style(run)
 
-            for i in range(len(self.titles)):
-                paragraph = document.add_paragraph()
-                para_format(paragraph, -0.3333, -0.3333, 4, 0)
-                run = paragraph.add_run(str(i + 1) + ". " + self.titles[i])
-                red_head.apply_style(run)
+            for i in range(len(self.desc)):
+                # paragraph = document.add_paragraph()
+                # para_format(paragraph, -0.3333, -0.3333, 4, 0)
+                # run = paragraph.add_run(str(i + 1) + ". " + self.titles[i])
+                # red_head.apply_style(run)
 
                 if self.desc[i]:
                     paragraph = document.add_paragraph()
@@ -247,7 +249,7 @@ def newsletter(request):
                 run = paragraph.add_run("   " + self.titles[i])
                 if self.desc[i]:
                     red_head.apply_style(run)
-                    run = paragraph.add_run(": " + self.desc[i])
+                    run = paragraph.add_run(self.desc[i])
                     red_content.apply_style(run)
                 else:
                     red_content.apply_style(run)
@@ -260,15 +262,17 @@ def newsletter(request):
                 elif len(self.pics) < 3:
                     paragraph = document.add_paragraph()
                     for i in range(len(self.pics)):
-                        run = paragraph.add_run()
-                        run.add_picture(self.pics[i], width=Inches(3), height=Inches(2))
-                        paragraph.add_run("  ")
+                        if self.pics[i]:
+                            run = paragraph.add_run()
+                            run.add_picture(self.pics[i], width=Inches(3), height=Inches(2))
+                            paragraph.add_run("  ")
                 elif len(self.pics) < 4:
                     paragraph = document.add_paragraph()
                     for i in range(len(self.pics)):
-                        run = paragraph.add_run()
-                        run.add_picture(self.pics[i], width=Inches(2), height=Inches(1.5))
-                        paragraph.add_run("  ")
+                        if self.pics[i]:
+                            run = paragraph.add_run()
+                            run.add_picture(self.pics[i], width=Inches(2), height=Inches(1.5))
+                            paragraph.add_run("  ")
                 else:
                     table = document.add_table(rows=1, cols=2)
                     for j in range(len(self.pics)):
@@ -356,7 +360,7 @@ def newsletter(request):
     # NewsLetter Front Page Content
     header = Header.objects.latest('id')
     year = getattr(header, 'academic_year')
-    sem = "Odd"
+    sem = getattr(header, 'semester')
     vol = getattr(header,'volume')
 
     h1 = 'Department of Computer Engineering'
@@ -380,26 +384,31 @@ def newsletter(request):
     # NewLetter Content
     # Highlights of Department
     hlts_heading = "Highlights of the Department"
-    hlts_faculty = ["Dr. Hiral Shah", "Dr. Jai Shah", "Dr. Sarvesh Soni"]
-    hlts_content = ["Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur pulvinar dignissim ex.",
-                    "Donec nunc leo, accumsan pretium nisl ac, bibendum fringilla ligula.",
-                    "Aliquam erat volutpat. In eget facilisis orci. Aenean iaculis euismod nulla, nec convallis diam ornare volutpat."]
-    hlts_pics = []
+    highlights = get_highlights(request, Highlights.objects.values())
+    hlts_faculty = highlights[0]
+    hlts_content = highlights[1]
+    hlts_pics = [2]
 
     # Remarkable Milestones
+    milestones = get_milestones(request, Milestones.objects.values())
     rem_mlstns_heading = "Remarkable Milestones:"
-    rem_mlstns_title = ["Remarkable Milestones Title 1", "Remarkable Milestones Title 2"]
-    rem_mlstns_desc = [
-        "Curabitur venenatis, nibh quis pharetra tincidunt, odio nisl sollicitudin justo, vel efficitur odio urna eu libero.",
-        "Praesent id urna arcu. Curabitur ultricies enim ac sapien dictum, non lacinia metus tincidunt. Nulla tellus urna."]
+    rem_mlstns_title = []
+    rem_mlstns_desc = milestones[0]
+    print(rem_mlstns_desc)
     rem_mlstns_team = [[''], ['']]
-    rem_mlstns_pic = []
+    rem_mlstns_pic = milestones[1]
+    print(rem_mlstns_pic)
     rem_mlstns_pics_caption = ['', '']
 
     # Activities Conducted
-    activity_desc = []
-    activity_img = []
-    activity_img_cap = []
+    activities = get_activities(request, Activities.objects.values())
+    activity_heading = 'Activities Conducted for Students'
+    activity_desc = activities[0]
+    activity_title = []
+    for x in range(len(activity_desc)):
+        activity_title.append('')
+    activity_img = activities[1]
+    # activity_img_cap = []
 
     # Placement Statistics
     company_name = ['MuSignma', 'TCS ninja', 'Amazon', 'Reliance Jio', 'Accenture', 'Infosys']
@@ -458,11 +467,14 @@ def newsletter(request):
     # group_pic("group_pic.png")
     static_content(abt_department, vision, missions, peos)
 
-    highlights = SmallContent(hlts_heading, hlts_faculty, hlts_content, hlts_pics)
-    highlights.create_docx()
+    # highlights = SmallContent(hlts_heading, hlts_faculty, hlts_content, hlts_pics)
+    # highlights.create_docx()
 
     remarkable_milestones = BigContent(rem_mlstns_heading, rem_mlstns_title, rem_mlstns_desc, rem_mlstns_team, rem_mlstns_pic, rem_mlstns_pics_caption)
     remarkable_milestones.create_docx()
+
+    activities_conducted = SmallContent(activity_heading, activity_title, activity_desc, activity_img)
+    activities_conducted.create_docx()
 
 
     table_pics = []
