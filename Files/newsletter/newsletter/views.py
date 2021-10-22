@@ -67,7 +67,7 @@ def get_placements(request, placements):
         if 'placements'+str(i)+'-check' in request.GET:
             companies.append(Placements.objects.get(pk=i).company)
             number.append(Placements.objects.get(pk=i).number)
-    print(companies, number)
+    return companies, number
 
 def get_students(request, students):
     student_desc = []
@@ -78,7 +78,7 @@ def get_students(request, students):
         if 'students'+str(i)+'-check' in request.GET:
             student_desc.append(Students.objects.get(pk=i).description)
             images.append(Students.objects.get(pk=i).image)
-    print(student_desc, images)
+    return student_desc, images
     
 def get_events(request, events):
     event_desc = []
@@ -89,7 +89,7 @@ def get_events(request, events):
         if 'events'+str(i)+'-check' in request.GET:
             event_desc.append(Events.objects.get(pk=i).description)
             images.append(Events.objects.get(pk=i).image)
-    print(event_desc, images)
+    return event_desc, images
 
     
 def get_projects(request, projects):
@@ -99,7 +99,7 @@ def get_projects(request, projects):
     for i in ids:
         if 'projects'+str(i)+'-check' in request.GET:
             project_desc.append(Projects.objects.get(pk=i).description)
-    print(project_desc)
+    return project_desc
 
 def get_phds(request, phds):
     phd_desc = []
@@ -108,6 +108,6 @@ def get_phds(request, phds):
     for i in ids:
         if 'phds'+str(i)+'-check' in request.GET:
             phd_desc.append(Phd.objects.get(pk=i).description)
-    print(phd_desc)
+    return phd_desc
 
 

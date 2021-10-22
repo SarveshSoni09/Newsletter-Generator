@@ -14,6 +14,7 @@ from docx.enum.table import WD_ALIGN_VERTICAL
 from admin_panel.models import Header
 from newsletter.views import *
 from faculty_panel.models import *
+from admin_panel import views as admv
 
 
 # Red Shade: #A93639
@@ -118,7 +119,7 @@ def newsletter(request):
             paragraph = document.add_paragraph()
             para_format(paragraph, -0.3333, -0.3333, 2, 0)
             run = paragraph.add_run()
-            run.add_picture('bullet_red.png', width=Cm(0.2), height=Cm(0.2))
+            run.add_picture('newsletter/Static/ScriptStatic/bullet_red.png', width=Cm(0.2), height=Cm(0.2))
             run = paragraph.add_run("   " + mission)
             red_content.apply_style(run)
             run.italic = True
@@ -167,19 +168,18 @@ def newsletter(request):
 
     class BigContent:
 
-        def __init__(self, heading, title, description, team, img, img_cap):
+        def __init__(self, heading, description, img, img_cap):
             self.heading = heading
-            self.titles = title
             self.desc = description
-            self.teams = team
             self.img = img
             self.img_cap = img_cap
 
         def create_docx(self):
-            paragraph = document.add_paragraph()
-            para_format(paragraph, -0.3333, -0.3333, 10, 2)
-            run = paragraph.add_run(self.heading)
-            blue_head.apply_style(run)
+            if self.desc:
+                paragraph = document.add_paragraph()
+                para_format(paragraph, -0.3333, -0.3333, 10, 2)
+                run = paragraph.add_run(self.heading)
+                blue_head.apply_style(run)
 
             for i in range(len(self.desc)):
                 # paragraph = document.add_paragraph()
@@ -193,73 +193,75 @@ def newsletter(request):
                     run = paragraph.add_run(self.desc[i])
                     red_content.apply_style(run)
 
-                if self.teams[i][0]:
-                    paragraph = document.add_paragraph()
-                    para_format(paragraph, 0, -0.3333, 4, 2)
-                    run = paragraph.add_run("Team Members: ")
-                    red_head.apply_style(run)
+                # if self.teams[i][0]:
+                #     paragraph = document.add_paragraph()
+                #     para_format(paragraph, 0, -0.3333, 4, 2)
+                #     run = paragraph.add_run("Team Members: ")
+                #     red_head.apply_style(run)
 
-                    table = document.add_table(rows=1, cols=2)
-                    for j in range(len(self.teams[i])):
-                        if j % 2 == 0:
-                            if j > 1:
-                                row_cells = table.add_row().cells
-                            else:
-                                row_cells = table.rows[0].cells
-                            paragraph = row_cells[0].paragraphs[0]
-                            run = paragraph.add_run(str(j + 1) + ". " + self.teams[i][j])
-                            red_content.apply_style(run)
-                        else:
-                            paragraph = row_cells[1].paragraphs[0]
-                            run = paragraph.add_run(str(j + 1) + ". " + self.teams[i][j])
-                            red_content.apply_style(run)
+                #     table = document.add_table(rows=1, cols=2)
+                #     for j in range(len(self.teams[i])):
+                #         if j % 2 == 0:
+                #             if j > 1:
+                #                 row_cells = table.add_row().cells
+                #             else:
+                #                 row_cells = table.rows[0].cells
+                #             paragraph = row_cells[0].paragraphs[0]
+                #             run = paragraph.add_run(str(j + 1) + ". " + self.teams[i][j])
+                #             red_content.apply_style(run)
+                #         else:
+                #             paragraph = row_cells[1].paragraphs[0]
+                #             run = paragraph.add_run(str(j + 1) + ". " + self.teams[i][j])
+                #             red_content.apply_style(run)
 
                 if self.img:
                     paragraph = document.add_paragraph()
-                    if not self.img_cap[i]:
-                        para_format(paragraph, -0.3333, -0.3333, 2, 4)
-                    else:
-                        para_format(paragraph, -0.3333, -0.3333, 2, 0)
+                    para_format(paragraph, -0.3333, -0.3333, 2, 0)
                     run = paragraph.add_run()
                     run.add_picture(self.img[i], width=Inches(6), height=Inches(3))
 
-                if self.img_cap[i]:
-                    paragraph = document.add_paragraph()
-                    para_format(paragraph, -0.3333, -0.3333, 2, 4)
-                    run = paragraph.add_run(self.img_cap[i])
-                    red_content.apply_style(run)
+                # if self.img_cap[i]:
+                #     paragraph = document.add_paragraph()
+                #     para_format(paragraph, -0.3333, -0.3333, 2, 4)
+                #     run = paragraph.add_run(self.img_cap[i])
+                #     red_content.apply_style(run)
 
 
     class SmallContent:
         def __init__(self, heading, title, desc, pics):
             self.heading = heading
-            self.titles = title
+            self.title = title
             self.desc = desc
             self.pics = pics
 
+
         def create_docx(self):
             updated_pics = []
-            for pic in self.pics:
-                if pic:
-                    updated_pics.append(pic)
+            if self.pics:
+                for pic in self.pics:
+                    if pic:
+                        updated_pics.append(pic)
 
-            paragraph = document.add_paragraph()
-            para_format(paragraph, -0.3333, -0.3333, 10, 2)
-            run = paragraph.add_run(self.heading)
-            blue_head.apply_style(run)
+            if self.desc:
+                paragraph = document.add_paragraph()
+                para_format(paragraph, -0.3333, -0.3333, 10, 2)
+                run = paragraph.add_run(self.heading)
+                blue_head.apply_style(run)  
 
-            for i in range(len(self.titles)):
+            for i in range(len(self.desc)):
                 paragraph = document.add_paragraph()
                 para_format(paragraph, -0.3333, -0.3333, 4, 0)
-                run = paragraph.add_run()
-                run.add_picture('bullet_red.png', width=Cm(0.2), height=Cm(0.2))
-                run = paragraph.add_run("   " + self.titles[i])
-                if self.desc[i]:
-                    red_head.apply_style(run)
-                    run = paragraph.add_run(": " + self.desc[i])
-                    red_content.apply_style(run)
-                else:
-                    red_content.apply_style(run)
+                if self.title:
+                    run = paragraph.add_run(self.title[i] + ': ')
+                run  = paragraph.add_run()
+                run.add_picture('newsletter/Static/ScriptStatic/bullet_red.png', width=Cm(0.2), height=Cm(0.2))
+                run = paragraph.add_run("   " + self.desc[i])
+                # if self.desc[i]:
+                #     red_head.apply_style(run)
+                #     run = paragraph.add_run(": " + self.desc[i])
+                #     red_content.apply_style(run)
+                # else:
+                red_content.apply_style(run)
 
             if updated_pics:
                 if len(updated_pics) < 2:
@@ -395,38 +397,31 @@ def newsletter(request):
     highlights = get_highlights(request, Highlights.objects.values())
     hlts_faculty = highlights[0]
     hlts_content = highlights[1]
-    hlts_pics = [2]
+    hlts_pics = highlights[2]
 
     # Remarkable Milestones
     milestones = get_milestones(request, Milestones.objects.values())
     rem_mlstns_heading = "Remarkable Milestones:"
-    rem_mlstns_title = []
     rem_mlstns_desc = milestones[0]
-    print(rem_mlstns_desc)
-    rem_mlstns_team = [[''], ['']]
     rem_mlstns_pic = milestones[1]
-    print(rem_mlstns_pic)
-    rem_mlstns_pics_caption = ['', '']
+
 
     # Activities Conducted
     activities = get_activities(request, Activities.objects.values())
     activity_heading = 'Activities Conducted for Students'
     activity_desc = activities[0]
-    activity_title = []
-    for x in range(len(activity_desc)):
-        activity_title.append('')
     activity_img = activities[1]
     # activity_img_cap = []
 
     # Placement Statistics
-    company_name = ['MuSignma', 'TCS ninja', 'Amazon', 'Reliance Jio', 'Accenture', 'Infosys']
-    no_of_recruits = [20, 25, 10, 30, 15, 40]
+    placements = get_placements(request, Placements.objects.values())
+    company_name = placements[0]
+    no_of_recruits = placements[1]
     placement_x = "Name of Commpany"
     placement_y = "Number of Students Hired"
     placement_title = "Placement Statistics"
-    placement_caption = "Percentage of placement in various Companies"
+    placement_caption = "Students placed in various Companies"
 
-    # Result Statistics
     student_year = ['SY', 'TY', 'LY']
     students_pass = [90, 94.5, 98]
     results_x = "Year"
@@ -436,37 +431,27 @@ def newsletter(request):
 
 
     # Student Achievements
+    achievements = get_students(request, Students.objects.values())
     stud_ach_heading = "Student Achievements"
-    stud_ach_title = ["Student Achievements Title 1", "Student Achievements Title 2", "Student Achievements Title 3"]
-    stud_ach_desc = [
-        "Student Achievements Content 1: Curabitur venenatis, nibh quis pharetra tincidunt, odio nisl sollicitudin justo, vel efficitur odio urna eu libero.",
-        "Student Achievements Content 2: Praesent id urna arcu. Curabitur ultricies enim ac sapien dictum, non lacinia metus tincidunt. Nulla tellus urna.",
-        "Student Achievements Content 3: facilisis sit amet augue eu, semper imperdiet nisi. Nulla quis porta tellus, sit amet ornare nunc."]
-    stud_ach_team = [['Sarvesh', 'Jai', 'Hiral', 'Sarvesh'],
-                    ['Hiral', 'Sarvesh', 'Jai', 'Hiral', 'Sarvesh'],
-                    ['Jai', 'Sarvesh', 'Highral']
-                    ]
-    stud_ach_img = []
-    stud_ach_img_caption = ['', '', '']
+    stud_ach_desc = achievements[0]
+    stud_ach_img = achievements[1]
 
     # Faculty Events
-    event_desc = []
-    event_img = []
+    events = get_events(request, Events.objects.values())
+    event_heading = 'Events conducted by Faculty'
+    event_desc = events[0]
+    event_img = events[1]
 
     # Companny Projects
+    projects = get_projects(request, Projects.objects.values())
     company_project_heading = "Project Sponsored by Companies"
-    project_company = ['IITB', 'KJS Medical College']
-    project_title = ['Frontend for SPAN (Synergistic Program ANalyzer)',
-                    'Diabetic Retinopathy Identification']
+    project_desc = projects
     project_pics = []
 
     # PhD Pursuing Faculties
+    phds = get_phds(request, Phd.objects.values())
     phd_heading = "PhD Pursuing Faculties"
-    phd_faculty_name = ['Mrs. Sarita Ambadekar', 'Mrs. Shyamal Vidnorkar']
-    phd_desc = []
-    phd_pics = []
-    for name in phd_faculty_name:
-        phd_desc.append('')
+    phd_desc = phds
 
     ### Main Code
     document = Document(r'D:\JaiShah\College\Sem 5\Minor Project\Files\newsletter\newsletter\static\ScriptStatic\Newsletter Template.docx')
@@ -475,13 +460,13 @@ def newsletter(request):
     # group_pic("group_pic.png")
     static_content(abt_department, vision, missions, peos)
 
-    # highlights = SmallContent(hlts_heading, hlts_faculty, hlts_content, hlts_pics)
-    # highlights.create_docx()
+    highlights = SmallContent(hlts_heading, hlts_faculty, hlts_content, hlts_pics)
+    highlights.create_docx()
 
-    remarkable_milestones = BigContent(rem_mlstns_heading, rem_mlstns_title, rem_mlstns_desc, rem_mlstns_team, rem_mlstns_pic, rem_mlstns_pics_caption)
+    remarkable_milestones = BigContent(rem_mlstns_heading, rem_mlstns_desc, rem_mlstns_pic, None)
     remarkable_milestones.create_docx()
 
-    activities_conducted = SmallContent(activity_heading, activity_title, activity_desc, activity_img)
+    activities_conducted = SmallContent(activity_heading, None, activity_desc, activity_img)
     activities_conducted.create_docx()
 
 
@@ -494,18 +479,20 @@ def newsletter(request):
 
     table_create(head_of_pics, table_pics, caption_of_pics)
 
-    student_achievements = BigContent(stud_ach_heading, stud_ach_title, stud_ach_desc, stud_ach_team, stud_ach_img, stud_ach_img_caption)
+    student_achievements = BigContent(stud_ach_heading, stud_ach_desc, stud_ach_img, None)
     student_achievements.create_docx()
 
-    company_projects = SmallContent(company_project_heading, project_company, project_title, None)
+    faculty_events = SmallContent(event_heading, None, event_desc, event_img)
+    faculty_events.create_docx()
+
+    company_projects = SmallContent(company_project_heading, None, project_desc, None)
     company_projects.create_docx()
 
-    phd_faculties = SmallContent(phd_heading, phd_faculty_name, phd_desc, phd_pics)
+    phd_faculties = SmallContent(phd_heading, None, phd_desc, None)
     phd_faculties.create_docx()
 
     document.save('Newsletter.docx')
-    return render(request, 'admin-panel.html')
-    
-    
-
-
+    all_data = admv.get_data()
+    return render(request, 'admin-panel.html', {'all_data' : all_data})
+    # Sample Comment
+    # To make code upto 500 lines
