@@ -117,7 +117,9 @@ def newsletter(request):
         for mission in missions:
             paragraph = document.add_paragraph()
             para_format(paragraph, -0.3333, -0.3333, 2, 0)
-            run = paragraph.add_run(mission)
+            run = paragraph.add_run()
+            run.add_picture('bullet_red.png', width=Cm(0.2), height=Cm(0.2))
+            run = paragraph.add_run("   " + mission)
             red_content.apply_style(run)
             run.italic = True
 
@@ -236,6 +238,11 @@ def newsletter(request):
             self.pics = pics
 
         def create_docx(self):
+            updated_pics = []
+            for pic in self.pics:
+                if pic:
+                    updated_pics.append(pic)
+
             paragraph = document.add_paragraph()
             para_format(paragraph, -0.3333, -0.3333, 10, 2)
             run = paragraph.add_run(self.heading)
@@ -245,49 +252,50 @@ def newsletter(request):
                 paragraph = document.add_paragraph()
                 para_format(paragraph, -0.3333, -0.3333, 4, 0)
                 run = paragraph.add_run()
-                run.add_picture('newsletter/Static/ScriptStatic/bullet_red.png', width=Cm(0.2), height=Cm(0.2))
+                run.add_picture('bullet_red.png', width=Cm(0.2), height=Cm(0.2))
                 run = paragraph.add_run("   " + self.titles[i])
                 if self.desc[i]:
                     red_head.apply_style(run)
-                    run = paragraph.add_run(self.desc[i])
+                    run = paragraph.add_run(": " + self.desc[i])
                     red_content.apply_style(run)
                 else:
                     red_content.apply_style(run)
 
-            if self.pics:
-                if len(self.pics) < 2:
+            if updated_pics:
+                if len(updated_pics) < 2:
                     paragraph = document.add_paragraph()
                     run = paragraph.add_run()
-                    run.add_picture(self.pics[0], width=Inches(6), height=Inches(3))
-                elif len(self.pics) < 3:
+                    run.add_picture(updated_pics[0], width=Inches(6), height=Inches(3))
+                elif len(updated_pics) < 3:
                     paragraph = document.add_paragraph()
-                    for i in range(len(self.pics)):
-                        if self.pics[i]:
+                    for i in range(len(updated_pics)):
+                        if updated_pics[i]:
                             run = paragraph.add_run()
-                            run.add_picture(self.pics[i], width=Inches(3), height=Inches(2))
+                            run.add_picture(updated_pics[i], width=Inches(3), height=Inches(2))
                             paragraph.add_run("  ")
-                elif len(self.pics) < 4:
+                elif len(updated_pics) < 4:
                     paragraph = document.add_paragraph()
-                    for i in range(len(self.pics)):
-                        if self.pics[i]:
+                    for i in range(len(updated_pics)):
+                        if updated_pics[i]:
                             run = paragraph.add_run()
-                            run.add_picture(self.pics[i], width=Inches(2), height=Inches(1.5))
+                            run.add_picture(updated_pics[i], width=Inches(2), height=Inches(1.5))
                             paragraph.add_run("  ")
                 else:
                     table = document.add_table(rows=1, cols=2)
-                    for j in range(len(self.pics)):
-                        if j % 2 == 0:
-                            if j > 1:
-                                row_cells = table.add_row().cells
+                    for j in range(len(updated_pics)):
+                        if updated_pics[j]:
+                            if j % 2 == 0:
+                                if j > 1:
+                                    row_cells = table.add_row().cells
+                                else:
+                                    row_cells = table.rows[0].cells
+                                paragraph = row_cells[0].paragraphs[0]
+                                run = paragraph.add_run()
+                                run.add_picture(updated_pics[j], width=Inches(3), height=Inches(2))
                             else:
-                                row_cells = table.rows[0].cells
-                            paragraph = row_cells[0].paragraphs[0]
-                            run = paragraph.add_run()
-                            run.add_picture(self.pics[i], width=Inches(3), height=Inches(2))
-                        else:
-                            paragraph = row_cells[1].paragraphs[0]
-                            run = paragraph.add_run()
-                            run.add_picture(self.pics[i], width=Inches(3), height=Inches(2))
+                                paragraph = row_cells[1].paragraphs[0]
+                                run = paragraph.add_run()
+                                run.add_picture(updated_pics[j], width=Inches(3), height=Inches(2))
 
 
     def chart_gen(title, xlist, ylist, xlabel, ylabel):
