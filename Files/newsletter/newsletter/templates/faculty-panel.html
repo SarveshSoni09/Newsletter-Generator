@@ -1,149 +1,260 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <meta content="width=device-width, initial-scale=1.0" name="viewport">
-        {% csrf_token %}
-        {% load static %}
-        <title>KJSIEIT Newsletter Portal - Faculty Panel</title>
-        <meta content="Newsletter Generator Portal for Department of Computer Engineering, KJSIEIT" name="description">
-        <meta content="KJSIEIT, Newsletter, KJSIEIT Newsletter, KJSIEIT Newsletter Portal" name="keywords">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    {% csrf_token %} {% load static %}
+    <title>KJSIEIT Newsletter Portal - Faculty Panel</title>
+    <meta
+      content="Newsletter Generator Portal for Department of Computer Engineering, KJSIEIT"
+      name="description"
+    />
+    <meta
+      content="KJSIEIT, Newsletter, KJSIEIT Newsletter, KJSIEIT Newsletter Portal"
+      name="keywords"
+    />
 
-        <!-- Favicons -->
-        <link href="{% static 'assets/img/slogo.png' %}" rel="icon">
+    <!-- Favicons -->
+    <link href="{% static 'assets/img/slogo.png' %}" rel="icon" />
 
-        <!-- Google Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Montserrat:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Montserrat:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+      rel="stylesheet"
+    />
 
-        <!-- Vendor CSS Files -->
-        <link href="{% static 'assets/vendor/aos/aos.css' %}" rel="stylesheet">
-        <link href="{% static 'assets/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
-        <link href="{% static 'assets/vendor/boxicons/css/boxicons.min.css' %}" rel="stylesheet">
-        <link href="{% static 'assets/vendor/glightbox/css/glightbox.min.css' %}" rel="stylesheet">
+    <!-- Vendor CSS Files -->
+    <link href="{% static 'assets/vendor/aos/aos.css' %}" rel="stylesheet" />
+    <link
+      href="{% static 'assets/vendor/bootstrap/css/bootstrap.min.css' %}"
+      rel="stylesheet"
+    />
+    <link
+      href="{% static 'assets/vendor/boxicons/css/boxicons.min.css' %}"
+      rel="stylesheet"
+    />
+    <link
+      href="{% static 'assets/vendor/glightbox/css/glightbox.min.css' %}"
+      rel="stylesheet"
+    />
 
-        <!-- Template Main CSS File -->
-        <link href="{% static 'assets/css/style.css' %}" rel="stylesheet">
+    <!-- Template Main CSS File -->
+    <link href="{% static 'assets/css/style.css' %}" rel="stylesheet" />
+  </head>
 
-    </head>
+  <body>
+    <!-- ======= Header ======= -->
+    <header id="header" class="d-flex align-items-center">
+      <div class="container d-flex align-items-center justify-content-between">
+        <div class="logo" id="full-logo">
+          <a href="https://kjsieit.somaiya.edu.in/en"
+            ><img
+              src="{% static 'assets/kjsieit-logo.svg' %}"
+              alt="KJSIEIT Logo"
+              class="img-fluid"
+          /></a>
+        </div>
+        <div class="logo" id="trust-logo">
+          <a href="https://kjsieit.somaiya.edu.in/en"
+            ><img
+              src="{% static 'assets/img/slogo.png' %}"
+              alt="Somaiya Trust Logo"
+              class="img-fluid"
+          /></a>
+        </div>
+        <div class="text-end">
+          <a href="logout"> <button class="logout" type="">Log Out</button></a>
+        </div>
+      </div>
+    </header>
+    <!-- End Header -->
 
-    <body>
-        <!-- ======= Header ======= -->
-        <header id="header" class="d-flex align-items-center">
-            <div class="container d-flex align-items-center justify-content-between">
-                <div class="logo" id="full-logo">
-                    <a href="https://kjsieit.somaiya.edu.in/en"><img src="{% static 'assets/kjsieit-logo.svg' %}" alt="KJSIEIT Logo" class="img-fluid"></a>
+    <main>
+      <div class="container text-center contact">
+        <section class="contact" style="background-color: white">
+          <h2 class="page-title">SUBMIT NEWSLETTER CONTENT</h2>
+          {% for message in messages %}
+          <h3><font color="green">{{message}}</font></h3>
+          {% endfor %}
+          <form
+            method="post"
+            action="{% url 'faculty-submit-data' %}"
+            name="data_send"
+            enctype="multipart/form-data"
+          >
+            {% csrf_token %}
+            <div class="form-fields">
+              <fieldset id="highlights-field">
+                <legend>Highlights of Department/Faculty</legend>
+                <div class="container details-form" id="highlights">
+                  <div>
+                    <div class="text-start">
+                      <label for="Name of the Faculty"
+                        >Name of the Faculty Member</label
+                      >
+                    </div>
+                    <input
+                      class="form-control box"
+                      type="text"
+                      name="faculty_name0"
+                      id="highlights-name"
+                    /><br />
+
+                    <div class="text-start">
+                      <label for="text">Achievement</label><br />
+                    </div>
+                    <textarea
+                      class="form-control"
+                      name="achievements0"
+                      id="highlights-desc"
+                      cols="30"
+                      rows="5"
+                    ></textarea
+                    ><br />
+
+                    <div class="text-start">
+                      <label for="img">Upload Image</label>
+                    </div>
+                    <div class="text-start">
+                      <input
+                        class="form-control box img-input"
+                        type="file"
+                        name="high-img0"
+                        id="highlights-img"
+                      />
+                    </div>
+                  </div>
+                  <div class="text-end">
+                    <button
+                      class="add-more"
+                      type="button"
+                      id="btn-highlights"
+                      onclick="repeatSection('highlights',0);"
+                    >
+                      Add More
+                    </button>
+                  </div>
                 </div>
-                <div class="logo" id="trust-logo">
-                    <a href="https://kjsieit.somaiya.edu.in/en"><img src="{% static 'assets/img/slogo.png' %}" alt="Somaiya Trust Logo" class="img-fluid"></a>
-                </div>
-                <div class="text-end">
-                    <a href="logout"> <button class="logout" type="">Log Out</button></a>
-                </div>
+              </fieldset>
             </div>
-        </header><!-- End Header -->
 
-        <main>
-            <div class="container text-center contact">
-                <section class="contact" style="background-color: white;">
-                    <h2 class="page-title">SUBMIT NEWSLETTER CONTENT</h2>
-                    {% for message in messages %}
-                            <h3><font color="green">{{message}}</font></h3>
-                        {% endfor %}
-                    <form method="post" action="{% url 'faculty-submit-data' %}" name="data_send" enctype="multipart/form-data">
-                        {% csrf_token %}
-                        <div class="form-fields">
-                            <fieldset id="highlights-field">
-                                <legend>Highlights of Department/Faculty</legend>
-                                <div class="container details-form" id="highlights" >
-                                    <div>
-                                        <div class="text-start">
-                                            <label for="Name of the Faculty">Name of the Faculty Member</label>
-                                        </div>
-                                        <input class="form-control box" type="text" name="faculty_name0" id="highlights-name"><br>
-            
-                                        <div class="text-start">
-                                            <label for="text">Achievement</label><br>
-                                        </div>
-                                        <textarea class="form-control" name="achievements0" id="highlights-desc" cols="30" rows="5"></textarea><br>
-            
-                                        <div class="text-start">
-                                            <label for="img">Upload Image</label>
-                                        </div>
-                                        <div class="text-start">
-                                            <input class="form-control box img-input" type="file" name="high-img0" id="highlights-img">
-                                        </div>
-                                    </div>
-                                    <div class="text-end">
-                                        <button class="add-more" type="button" id="btn-highlights" onclick="repeatSection('highlights',0);">Add More</button>
-                                    </div>                            
-                                </div>
-                            </fieldset>
-                        </div>
+            <div class="form-fields">
+              <fieldset>
+                <legend>Remarkable Milestones</legend>
+                <div class="container details-form" id="milestones">
+                  <div>
+                    <div class="text-start">
+                      <label for="text">Description</label><br />
+                    </div>
+                    <textarea
+                      class="form-control"
+                      name="milestones-desc0"
+                      id="milestones-desc"
+                      cols="30"
+                      rows="5"
+                    ></textarea
+                    ><br />
 
-                        <div class="form-fields">
-                            <fieldset>
-                                <legend>Remarkable Milestones</legend>
-                                <div class="container details-form" id="milestones">
-                                    <div>
-                                        <div class="text-start">
-                                            <label for="text">Description</label><br>
-                                        </div>
-                                        <textarea class="form-control" name="milestones-desc0" id="milestones-desc" cols="30" rows="5"></textarea><br>
-            
-                                        <div class="text-start">
-                                            <label for="img">Upload Image</label>
-                                        </div>
-                                        <input class="form-control box img-input" type="file" name="milestones-img0" id="milestones-img">
-                                    </div>
-                                    <div class="text-end">
-                                        <button class="add-more" type="button" id="btn-milestones" onclick="repeatSection('milestones',1);">Add More</button>
-                                    </div>
-                                </div>
-                            </fieldset>
-                        </div>
-                        
-                        <div class="form-fields">
-                            <fieldset>
-                                <legend>Activities conducted for students</legend>
-                                <div class="container details-form" id="activities">
-                                    <div>
-                                        <div class="text-start">
-                                            <label for="text">Description</label><br>
-                                        </div>
-                                        <textarea class="form-control" name="activities-desc0" id="activities-desc" cols="30" rows="5"></textarea><br>
-            
-                                        <div class="text-start">
-                                            <label for="img">Upload Image</label>
-                                        </div>
-                                        <input class="form-control box img-input" type="file" name="activities-img0" id="activities-img"><br>
-            
-                                        <div class="text-start">
-                                            <label for="">Image Caption</label>
-                                        </div>
-                                        <input type="text" name="activities-cap0" id="activities-cap" class="form-control box">
-                                    </div>
-                                    <div class="text-end">
-                                        <button class="add-more" type="button" id="btn-activities" onclick="repeatSection('activities',2);">Add More</button>
-                                    </div>
-                                </div>
-                            </fieldset>
-                        </div>
+                    <div class="text-start">
+                      <label for="img">Upload Image</label>
+                    </div>
+                    <input
+                      class="form-control box img-input"
+                      type="file"
+                      name="milestones-img0"
+                      id="milestones-img"
+                    />
+                  </div>
+                  <div class="text-end">
+                    <button
+                      class="add-more"
+                      type="button"
+                      id="btn-milestones"
+                      onclick="repeatSection('milestones',1);"
+                    >
+                      Add More
+                    </button>
+                  </div>
+                </div>
+              </fieldset>
+            </div>
 
-                        <div class="form-fields">
-                            <fieldset>
-                                <legend>Placement Statistics</legend>
-                                <div class="container details-form" id="placements">
-                                    <div class="row stat-row" id="stat-row">
-                                        <div class="col-12 col-md-6 text-start">
-                                            <label for="companyname">Company name</label><br>
-                                            <input type="text" class="form-control box" id="placements-comp" name="placements-comp0">
-                                        </div>
-                                        <div class="col-12 col-md-6 text-start">
-                                            <label for="companyname">Number of Students</label><br>
-                                            <input type="number" class="form-control box" id="placements-num" name="placements-num0">
-                                        </div>
-                                    </div>
-                                    <!-- <div class="row stat-row">
+            <div class="form-fields">
+              <fieldset>
+                <legend>Activities conducted for students</legend>
+                <div class="container details-form" id="activities">
+                  <div>
+                    <div class="text-start">
+                      <label for="text">Description</label><br />
+                    </div>
+                    <textarea
+                      class="form-control"
+                      name="activities-desc0"
+                      id="activities-desc"
+                      cols="30"
+                      rows="5"
+                    ></textarea
+                    ><br />
+
+                    <div class="text-start">
+                      <label for="img">Upload Image</label>
+                    </div>
+                    <input
+                      class="form-control box img-input"
+                      type="file"
+                      name="activities-img0"
+                      id="activities-img"
+                    /><br />
+
+                    <div class="text-start">
+                      <label for="">Image Caption</label>
+                    </div>
+                    <input
+                      type="text"
+                      name="activities-cap0"
+                      id="activities-cap"
+                      class="form-control box"
+                    />
+                  </div>
+                  <div class="text-end">
+                    <button
+                      class="add-more"
+                      type="button"
+                      id="btn-activities"
+                      onclick="repeatSection('activities',2);"
+                    >
+                      Add More
+                    </button>
+                  </div>
+                </div>
+              </fieldset>
+            </div>
+
+            <div class="form-fields">
+              <fieldset>
+                <legend>Placement Statistics</legend>
+                <div class="container details-form" id="placements">
+                  <div class="row stat-row" id="stat-row">
+                    <div class="col-12 col-md-6 text-start">
+                      <label for="companyname">Company name</label><br />
+                      <input
+                        type="text"
+                        class="form-control box"
+                        id="placements-comp"
+                        name="placements-comp0"
+                      />
+                    </div>
+                    <div class="col-12 col-md-6 text-start">
+                      <label for="companyname">Number of Students</label><br />
+                      <input
+                        type="number"
+                        class="form-control box"
+                        id="placements-num"
+                        name="placements-num0"
+                      />
+                    </div>
+                  </div>
+                  <!-- <div class="row stat-row">
                                         <div class="col-12 col-md-6 text-start">
                                             <label for="companyname">Company name</label><br>
                                             <input type="text" class="form-control box">
@@ -173,120 +284,195 @@
                                             <input type="number" class="form-control box">
                                         </div> 
                                     </div> -->
-                                    <div class="text-end">
-                                        <button class="add-more" type="button" style="margin-top: 0px;" id="btn-placements" onclick="repeatSection('placements',3);">Add More</button>
-                                    </div>
-                                </div>
-                            </fieldset>
-                        </div>
-
-                        <div class="form-fields">
-                            <fieldset>
-                                <legend>Student Achievements</legend>
-                                <div class="container details-form" id="students">
-                                    <div>
-                                        <div class="text-start">
-                                            <label for="text">Description</label><br>
-                                        </div>
-                                        <textarea class="form-control" name="students-desc0" id="students-desc" cols="30" rows="5"></textarea><br>
-            
-                                        <div class="text-start">
-                                            <label for="img">Upload Image</label>
-                                        </div>
-                                        <input class="form-control box img-input" type="file" name="students-img0" id="students-img">
-                                    </div>
-                                    <div class="text-end">
-                                        <button class="add-more" type="button" id="btn-students" onclick="repeatSection('students',4);">Add More</button>
-                                    </div>
-                                </div>
-                            </fieldset>
-                        </div>
-
-                        <div class="form-fields">
-                            <fieldset>
-                                <legend>Events Attended by Faculties</legend>
-                                <div class="container details-form" id="events">
-                                    <div>
-                                        <div class="text-start">
-                                            <label for="text">Description</label><br>
-                                        </div>
-                                        <textarea class="form-control" name="events-desc0" id="events-desc" cols="30" rows="5"></textarea><br>
-            
-                                        <div class="text-start">
-                                            <label for="img">Upload Image</label>
-                                        </div>
-                                        <input class="form-control box img-input" type="file" name="events-img0" id="events-img">
-                                    </div>
-                                    <div class="text-end">
-                                        <button class="add-more" type="button" id="btn-events" onclick="repeatSection('events',5);">Add More</button>
-                                    </div>
-                                </div>
-                            </fieldset>
-                        </div>
-
-                        <div class="form-fields">
-                            <fieldset>
-                                <legend>Projects by Companies</legend>
-                                <div class="container details-form" id="project">
-                                    <div>
-                                        <div class="text-start">
-                                            <label for="text">Description</label><br>
-                                        </div>
-                                        <textarea class="form-control" name="project-desc0" id="project-desc" cols="30" rows="5"></textarea>
-                                    </div>
-                                    <div class="text-end">
-                                        <button class="add-more" type="button" id="btn-project" onclick="repeatSection('project',6);">Add More</button>
-                                    </div>
-                                </div>
-                            </fieldset>
-                        </div>
-
-                        <div class="form-fields">
-                            <fieldset>
-                                <legend>PhD. pursuing Faculties</legend>
-                                <div class="container details-form">
-                                    <div class="container details-form" id="phds">
-                                        <div>
-                                            <div class="text-start">
-                                                <label for="text">Description</label><br>
-                                            </div>
-                                            <textarea class="form-control" name="phds-desc0" id="phds-desc" cols="30" rows="5"></textarea>
-                                        </div>
-                                        <div class="text-end">
-                                            <button class="add-more" type="button" id="btn-phds" onclick="repeatSection('phds',7);">Add More</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </fieldset>
-                        </div>
-                        <div class="text-center">
-                            <button class="logout" type="submit" onclick="sendArray()" >Submit</button>
-                            <input id="array" name="array" type="hidden" value="69" />
-                        </div>
-                    </form>
-                </section>
-            </div>
-        </main>
-
-        <!-- ======= Footer ======= -->
-        <footer id="footer">
-            <div class="container footer-bottom clearfix">
-                <div class="copyright">
-                    <strong><span>Developed by students of KJSIEIT</span></strong>
+                  <div class="text-end">
+                    <button
+                      class="add-more"
+                      type="button"
+                      style="margin-top: 0px"
+                      id="btn-placements"
+                      onclick="repeatSection('placements',3);"
+                    >
+                      Add More
+                    </button>
+                  </div>
                 </div>
+              </fieldset>
             </div>
-        </footer><!-- End Footer -->
 
-        <!-- Vendor JS Files -->
-        <script src="{% static 'assets/vendor/jquery/jquery.slim.min.js' %}"></script>
-        <script src="{% static 'assets/vendor/jsdelivr/popper.min.js' %}"></script>
-        <script src="https://cdnjs.com/libraries/popper.js"></script>
-        <script src="{% static 'assets/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
-        <script src="{% static 'assets/vendor/aos/aos.js' %}"></script>
-        <script src="{% static 'assets/vendor/glightbox/js/glightbox.min.js' %}"></script>
-        <script src="{% static 'assets/vendor/php-email-form/validate.js' %}"></script>
+            <div class="form-fields">
+              <fieldset>
+                <legend>Student Achievements</legend>
+                <div class="container details-form" id="students">
+                  <div>
+                    <div class="text-start">
+                      <label for="text">Description</label><br />
+                    </div>
+                    <textarea
+                      class="form-control"
+                      name="students-desc0"
+                      id="students-desc"
+                      cols="30"
+                      rows="5"
+                    ></textarea
+                    ><br />
 
-        <!-- Template Main JS File -->
-        <script src="{% static 'assets/js/main.js' %}"></script>
-    </body>
+                    <div class="text-start">
+                      <label for="img">Upload Image</label>
+                    </div>
+                    <input
+                      class="form-control box img-input"
+                      type="file"
+                      name="students-img0"
+                      id="students-img"
+                    />
+                  </div>
+                  <div class="text-end">
+                    <button
+                      class="add-more"
+                      type="button"
+                      id="btn-students"
+                      onclick="repeatSection('students',4);"
+                    >
+                      Add More
+                    </button>
+                  </div>
+                </div>
+              </fieldset>
+            </div>
+
+            <div class="form-fields">
+              <fieldset>
+                <legend>Events Attended by Faculties</legend>
+                <div class="container details-form" id="events">
+                  <div>
+                    <div class="text-start">
+                      <label for="text">Description</label><br />
+                    </div>
+                    <textarea
+                      class="form-control"
+                      name="events-desc0"
+                      id="events-desc"
+                      cols="30"
+                      rows="5"
+                    ></textarea
+                    ><br />
+
+                    <div class="text-start">
+                      <label for="img">Upload Image</label>
+                    </div>
+                    <input
+                      class="form-control box img-input"
+                      type="file"
+                      name="events-img0"
+                      id="events-img"
+                    />
+                  </div>
+                  <div class="text-end">
+                    <button
+                      class="add-more"
+                      type="button"
+                      id="btn-events"
+                      onclick="repeatSection('events',5);"
+                    >
+                      Add More
+                    </button>
+                  </div>
+                </div>
+              </fieldset>
+            </div>
+
+            <div class="form-fields">
+              <fieldset>
+                <legend>Projects by Companies</legend>
+                <div class="container details-form" id="project">
+                  <div>
+                    <div class="text-start">
+                      <label for="text">Description</label><br />
+                    </div>
+                    <textarea
+                      class="form-control"
+                      name="project-desc0"
+                      id="project-desc"
+                      cols="30"
+                      rows="5"
+                    ></textarea>
+                  </div>
+                  <div class="text-end">
+                    <button
+                      class="add-more"
+                      type="button"
+                      id="btn-project"
+                      onclick="repeatSection('project',6);"
+                    >
+                      Add More
+                    </button>
+                  </div>
+                </div>
+              </fieldset>
+            </div>
+
+            <div class="form-fields">
+              <fieldset>
+                <legend>PhD. pursuing Faculties</legend>
+                <div class="container details-form">
+                  <div class="container details-form" id="phds">
+                    <div>
+                      <div class="text-start">
+                        <label for="text">Description</label><br />
+                      </div>
+                      <textarea
+                        class="form-control"
+                        name="phds-desc0"
+                        id="phds-desc"
+                        cols="30"
+                        rows="5"
+                      ></textarea>
+                    </div>
+                    <div class="text-end">
+                      <button
+                        class="add-more"
+                        type="button"
+                        id="btn-phds"
+                        onclick="repeatSection('phds',7);"
+                      >
+                        Add More
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </fieldset>
+            </div>
+            <div class="text-center">
+              <button class="logout" type="submit" onclick="sendArray()">
+                Submit
+              </button>
+              <input id="array" name="array" type="hidden" value="69" />
+            </div>
+          </form>
+        </section>
+      </div>
+    </main>
+
+    <!-- ======= Footer ======= -->
+    <footer id="footer">
+      <div class="container footer-bottom clearfix">
+        <div class="copyright">
+          <strong><span>Developed by students of KJSIEIT</span></strong>
+        </div>
+      </div>
+    </footer>
+    <!-- End Footer -->
+
+    <!-- Vendor JS Files -->
+    <script src="{% static 'assets/vendor/jquery/jquery.slim.min.js' %}"></script>
+    <script src="{% static 'assets/vendor/jsdelivr/popper.min.js' %}"></script>
+    <script src="https://cdnjs.com/libraries/popper.js"></script>
+    <script src="{% static 'assets/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+    <script src="{% static 'assets/vendor/aos/aos.js' %}"></script>
+    <script src="{% static 'assets/vendor/glightbox/js/glightbox.min.js' %}"></script>
+    <script src="{% static 'assets/vendor/php-email-form/validate.js' %}"></script>
+
+    <!-- Template Main JS File -->
+    <script src="{% static 'assets/js/main.js' %}"></script>
+  </body>
 </html>
