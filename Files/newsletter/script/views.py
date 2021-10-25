@@ -1,29 +1,23 @@
-from django.shortcuts import render
-from docx import Document
-from docx.enum.table import WD_CELL_VERTICAL_ALIGNMENT
-from docx.shared import Pt
-from docx.shared import Cm
-from docx.shared import RGBColor
-from docx.shared import Inches
-from docx.enum.style import WD_STYLE_TYPE
-from docx.enum.text import WD_PARAGRAPH_ALIGNMENT
-import numpy as np
-import matplotlib.pyplot as plt
-import lxml
-from docx.enum.table import WD_ALIGN_VERTICAL
-from admin_panel.models import Header
-from newsletter.settings import BASE_DIR
-from newsletter.views import *
-from faculty_panel.models import *
-from admin_panel import views as admv
 import mimetypes
 import os
-from django.http.response import HttpResponse
-import os
+
+import lxml
+import matplotlib.pyplot as plt
+import numpy as np
+from admin_panel import views as admv
+from admin_panel.models import Header
 from django.conf import settings
-from django.http import HttpResponse, Http404
-
-
+from django.http import Http404, HttpResponse
+from django.http.response import HttpResponse
+from django.shortcuts import render
+from docx import Document
+from docx.enum.style import WD_STYLE_TYPE
+from docx.enum.table import WD_ALIGN_VERTICAL, WD_CELL_VERTICAL_ALIGNMENT
+from docx.enum.text import WD_PARAGRAPH_ALIGNMENT
+from docx.shared import Cm, Inches, Pt, RGBColor
+from faculty_panel.models import *
+from newsletter.settings import BASE_DIR
+from newsletter.views import *
 
 # Red Shade: #A93639
 # font_color = RGBColor(0xA9, 0x36, 0x39)
@@ -223,7 +217,8 @@ def newsletter(request):
                     #             run = paragraph.add_run(str(j + 1) + ". " + self.teams[i][j])
                     #             red_content.apply_style(run)
 
-                    if self.img:
+                    if self.img[i]:
+                        
                         paragraph = document.add_paragraph()
                         para_format(paragraph, -0.3333, -0.3333, 2, 0)
                         run = paragraph.add_run()
@@ -465,7 +460,9 @@ def newsletter(request):
         phd_desc = phds
 
         ### Main Code
-        document = Document('/static/ScriptStatic/Newsletter Template.docx')
+        document = Document(os.path.join(BASE_DIR, 'newsletter/static/ScriptStatic/Newsletter Template.docx'))
+        
+
 
         head_of_newsletter(h1, h2, h3, h4)
         # group_pic("group_pic.png")
@@ -503,12 +500,45 @@ def newsletter(request):
         phd_faculties.create_docx()
 
         document.save('Newsletter.docx')
-
-
-
+        if 'word' in request.GET:
+            pdf = False
+            response = download_file(request, pdf)
+            return response
+        if 'pdf' in request.GET:
+            pdf = True
+            convert(request)
+            response = download_file(request, pdf)
+            return response
         all_data = admv.get_data()
         # download_doc(request, '/Newsletter.docx')
         return render(request, 'admin-panel.html', {'all_data' : all_data})
     else:
         return render(request, 'index.html')
 
+def download_file(request, pdf):
+    # from django.utils.encoding import smart_str
+    # response = HttpResponse(content_type='application/force-download')
+    # response['Content-Disposition'] = 'attachment; filename=%s' % smart_str('Newsletter.docx')
+    # response['X-Sendfile'] = smart_str(os.path.join(BASE_DIR, 'newsletter/Newsletter.docx'))
+    # return response
+    from django.views.static import serve
+    if pdf:
+        filepath = os.path.join(BASE_DIR, 'Newsletter.pdf')
+    else:
+        filepath = os.path.join(BASE_DIR, 'Newsletter.docx')
+    return serve(request, os.path.basename(filepath), os.path.dirname(filepath))
+
+def convert(request):
+    import comtypes.client
+    import sys
+
+    wdFormatPDF = 17
+
+    in_file = os.path.join(BASE_DIR, 'Newsletter.docx')
+    out_file = os.path.join(BASE_DIR, 'Newsletter.pdf')
+
+    word = comtypes.client.CreateObject('Word.Application')
+    doc = word.Documents.Open(in_file)
+    doc.SaveAs(out_file, FileFormat=wdFormatPDF)
+    doc.Close()
+    word.Quit()

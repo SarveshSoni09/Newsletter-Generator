@@ -9,30 +9,30 @@ from admin_panel.views import get_data
 
 def login(request):
     all_data = get_data()
-    return render(request, 'admin-panel.html', {'all_data' : all_data,  'BASE_DIR' : settings.BASE_DIR})
+    # return render(request, 'admin-panel.html', {'all_data' : all_data,  'BASE_DIR' : settings.BASE_DIR})
     # return render(request, 'faculty-panel.html')
     # return render(request, 'forgot-password.html')
 
 
-    # if request.method == 'POST':
-    #     email = request.POST['email']
-    #     pwd = request.POST['pwd']
-    #     user = auth.authenticate(username=email, password=pwd)
-    #     if user is not None:
-    #         if user.is_superuser:
-    #             auth.login(request, user)
-    #             # return redirect('admin-panel')
-    #             return render(request, 'admin-panel.html', {'all_data' : all_data})
-    #         else:
-    #             auth.login(request, user)
-    #             # return redirect('faculty-panel')
-    #             return render(request, 'faculty-panel.html')
+    if request.method == 'POST':
+        email = request.POST['email']
+        pwd = request.POST['pwd']
+        user = auth.authenticate(username=email, password=pwd)
+        if user is not None:
+            if user.is_superuser:
+                auth.login(request, user)
+                # return redirect('admin-panel')
+                return render(request, 'admin-panel.html', {'all_data' : all_data})
+            else:
+                auth.login(request, user)
+                # return redirect('faculty-panel')
+                return render(request, 'faculty-panel.html')
                 
-    #     else:
-    #         messages.info(request, 'Invalid email or password')
-    #         return redirect('/')
-    # else:
-    #     return render(request, 'index.html')
+        else:
+            messages.info(request, 'Invalid email or password')
+            return redirect('/')
+    else:
+        return render(request, 'index.html')
 
 def test(request):
     return render(request, 'test.html')

@@ -27,7 +27,7 @@ def submit_data(request):
 
 def newsletter_header(request):
     academic_year = request.POST['acadyr']
-    volume = request.POST['volume']
+    volume = request.POST['Volume']
     department_image = request.FILES.get('dept-img',None)
     editorial_desk = request.POST['editorial-desk']
     if academic_year != '' or volume != '' or department_image is not None or editorial_desk != '':
