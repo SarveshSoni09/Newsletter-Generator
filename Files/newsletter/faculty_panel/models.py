@@ -33,4 +33,7 @@ class Projects(models.Model):
 
 class Phd(models.Model):
     description = models.TextField()
-
+    
+class Results(models.Model):
+    year = models.CharField(max_length = 20)
+    number = models.IntegerField()

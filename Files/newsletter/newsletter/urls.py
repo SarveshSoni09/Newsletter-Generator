@@ -19,6 +19,7 @@ from register import views as regv
 from login import views as logv
 from admin_panel import views as admv
 from faculty_panel import views as facv
+from forgot_password import views as forgv
 from newsletter import views
 from django.conf import settings
 from django.conf.urls.static import static
@@ -38,7 +39,9 @@ urlpatterns = [
     path('faculty-data-submitted', facv.submit_data, name='faculty-submit-data'),
     path('admin-data-submitted', admv.submit_data, name='admin-submit-data'),
     # path('download-doc-'+str(randnum), views.download_doc, name='download'),
-    path('download-doc-'+str(randnum), scriptv.newsletter, name='download'),
+    path('download-doc', scriptv.newsletter, name='download'),
+    path('forgot-password', forgv.forgot_pass, name='forgot_pass'),
+    path('reset-pass', forgv.reset_pass, name='reset_pass'),
 
 
 

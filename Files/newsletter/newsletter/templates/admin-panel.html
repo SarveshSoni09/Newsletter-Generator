@@ -227,6 +227,38 @@
                         </div>
                     </div>
                     <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingTwo">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#resultStats" aria-expanded="false" aria-controls="collapseTwo">
+                                Result Statistics
+                            </button>
+                        </h2>
+                        <div id="resultStats" class="accordion-collapse collapse" aria-labelledby="headingTwo"
+                            data-bs-parent="#accordionExample">
+                            <div class="accordion-body">
+                                <nav>
+                                    <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                                        {% for i in all_data.8 %}
+                                        <button class="nav-link" id="result{{i.id}}-tab" data-bs-toggle="tab"
+                                            data-bs-target="#result{{i.id}}" type="button" role="tab">{{i.year}}
+                                            <div class="form-check form-switch">
+                                                <input type="checkbox" class="form-check-input"
+                                                    id="results{{i.id}}-check" name="results{{i.id}}-check" />
+                                            </div>
+                                        </button>
+                                        {% endfor %}
+                                    </div>
+                                </nav>
+                                <div class="tab-content" id="nav-tabContent">
+                                    {% for i in all_data.8 %}
+                                    <div class="tab-pane teacher-content fade" id="result{{i.id}}" role="tabpanel">
+                                        Students placed: {{i.number}}</div>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
                         <h2 class="accordion-header" id="headingThree">
                             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                                 data-bs-target="#studentAchievements" aria-expanded="false"
@@ -526,36 +558,6 @@
                                                         name="placements-num0">
                                                 </div>
                                             </div>
-                                            <!-- <div class="row stat-row">
-                                                        <div class="col-12 col-md-6 text-start">
-                                                            <label for="companyname">Company name</label><br>
-                                                            <input type="text" class="form-control box">
-                                                        </div>
-                                                        <div class="col-12 col-md-6 text-start">
-                                                            <label for="companyname">Number of Students</label><br>
-                                                            <input type="number" class="form-control box">
-                                                        </div>
-                                                    </div>
-                                                    <div class="row stat-row">
-                                                        <div class="col-12 col-md-6 text-start">
-                                                            <label for="companyname">Company name</label><br>
-                                                            <input type="text" class="form-control box">
-                                                        </div>
-                                                        <div class="col-12 col-md-6 text-start">
-                                                            <label for="companyname">Number of Students</label><br>
-                                                            <input type="number" class="form-control box">
-                                                        </div>
-                                                    </div>
-                                                    <div class="row stat-row">
-                                                        <div class="col-12 col-md-6 text-start">
-                                                            <label for="companyname">Company name</label><br>
-                                                            <input type="text" class="form-control box">
-                                                        </div>
-                                                        <div class="col-12 col-md-6 text-start">
-                                                            <label for="companyname">Number of Students</label><br>
-                                                            <input type="number" class="form-control box">
-                                                        </div> 
-                                                    </div> -->
                                             <div class="text-end">
                                                 <button class="add-more" type="button" style="margin-top: 0px;"
                                                     id="btn-placements" onclick="repeatSection('placements',3);">Add
@@ -564,6 +566,45 @@
                                         </div>
                                     </fieldset>
                                 </div>
+
+                                <div class="form-fields">
+                                    <fieldset>
+                                      <legend>Result Statistics</legend>
+                                      <div class="container details-form" id="results">
+                                        <div class="row stat-row" id="stat-row">
+                                          <div class="col-12 col-md-6 text-start">
+                                            <label for="year">Year</label><br />
+                                            <input
+                                              type="text"
+                                              class="form-control box"
+                                              id="results-year"
+                                              name="results-year0"
+                                            />
+                                          </div>
+                                          <div class="col-12 col-md-6 text-start">
+                                            <label for="year">Number of Students Passed</label><br />
+                                            <input
+                                              type="number"
+                                              class="form-control box"
+                                              id="results-num"
+                                              name="results-num0"
+                                            />
+                                          </div>
+                                        </div>
+                                        <div class="text-end">
+                                          <button
+                                            class="add-more"
+                                            type="button"
+                                            style="margin-top: 0px"
+                                            id="btn-results"
+                                            onclick="repeatSection('results',8);"
+                                          >
+                                            Add More
+                                          </button>
+                                        </div>
+                                      </div>
+                                    </fieldset>
+                                  </div>
 
                                 <div class="form-fields">
                                     <fieldset>

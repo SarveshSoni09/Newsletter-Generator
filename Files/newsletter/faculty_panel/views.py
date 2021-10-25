@@ -18,6 +18,7 @@ def submit_data(request):
         events_faculties(request, num)
         project_companies(request, num)
         phd_faculties(request, num)
+        result_stats(request, num)
         messages.info(request, 'Data submitted succesfully')
         return render(request, 'faculty-panel.html')
 
@@ -84,6 +85,14 @@ def phd_faculties(request, num):
         if description != '':
             phd_faculties = Phd(description=description)
             phd_faculties.save()
+
+def result_stats(request, num):
+    for x in range(int(num[8])+1):
+        year = request.POST['results-year'+str(x)]
+        number = request.POST['results-num'+str(x)]
+        if year != '' or number != '':
+            results_stats = Results(year=year, number=number)
+            results_stats.save()
 
 
 

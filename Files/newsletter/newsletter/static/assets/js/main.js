@@ -215,7 +215,7 @@ function validateForm() {
     }
 }
 
-var idNums = [0,0,0,0,0,0,0,0];
+var idNums = [0,0,0,0,0,0,0,0,0];
 function repeatSection(section,secNum){
     var original = document.getElementById(section);
     var clone = original.cloneNode(true);
@@ -262,11 +262,15 @@ function repeatSection(section,secNum){
     case 7:
       document.getElementById(section+'-desc').setAttribute('name','phds-desc'+idNums[secNum]);
       break;
+
+    case 8:
+      document.getElementById(section+'-year').setAttribute('name','results-year'+idNums[secNum]);
+      document.getElementById(section+'-num').setAttribute('name','results-num'+idNums[secNum]);
+      break;
+
     }
     var x = document.getElementById('btn-'+section);
     x.style.display = "none";
-    console.log(original);
-    console.log(clone);
     original.parentNode.insertBefore(clone, original.nextSibling);
 
 }
@@ -274,3 +278,20 @@ function repeatSection(section,secNum){
 function sendArray(){
   document.getElementById('array').setAttribute('value',idNums);
 }
+
+// window.onbeforeunload = function() {
+//   window.localStorage.setItem(email,$('#email').val());
+//   window.localStorage.setItem(pwd, $('#pwd').val());
+//   window.localStorage.setItem(conpwd, $('#con_pwd').val());
+// }
+
+// window.onload = function() {
+//   var email = window.localStorage.getItem(email);
+//   var pwd = localStorage.getItem(pwd);
+//   var con_pwd = localStorage.getItem(con_pwd);
+//   console.log(email)
+//   if (email !== null) $('#email').val(email);
+//   if (pwd !== null) $('#pwd').val(pwd);
+//   if (con_pwd !== null) $('#con_pwd').val(con_pwd);
+  
+// }

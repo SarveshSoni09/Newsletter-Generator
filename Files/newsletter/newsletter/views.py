@@ -69,6 +69,17 @@ def get_placements(request, placements):
             number.append(Placements.objects.get(pk=i).number)
     return companies, number
 
+def get_results(request, results):
+    year = []
+    number = []
+    ids_raw = results.values_list('id')
+    ids = [j[0] for j in ids_raw]
+    for i in ids:
+        if 'results'+str(i)+'-check' in request.GET:
+            year.append(Results.objects.get(pk=i).year)
+            number.append(Results.objects.get(pk=i).number)
+    return year, number
+
 def get_students(request, students):
     student_desc = []
     images = []

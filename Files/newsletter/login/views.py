@@ -2,14 +2,17 @@ from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User, auth
-
+from newsletter import settings
 from admin_panel.views import get_data 
 # Create your views here.
 
 
 def login(request):
     all_data = get_data()
-    return render(request, 'admin-panel.html', {'all_data' : all_data})
+    return render(request, 'admin-panel.html', {'all_data' : all_data,  'BASE_DIR' : settings.BASE_DIR})
+    # return render(request, 'faculty-panel.html')
+    # return render(request, 'forgot-password.html')
+
 
     # if request.method == 'POST':
     #     email = request.POST['email']
