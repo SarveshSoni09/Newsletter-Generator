@@ -465,7 +465,7 @@ def newsletter(request):
         phd_desc = phds
 
         ### Main Code
-        document = Document(r'D:\JaiShah\College\Sem 5\Minor Project\Files\newsletter\newsletter\static\ScriptStatic\Newsletter Template.docx')
+        document = Document('/static/ScriptStatic/Newsletter Template.docx')
 
         head_of_newsletter(h1, h2, h3, h4)
         # group_pic("group_pic.png")
@@ -502,14 +502,13 @@ def newsletter(request):
         phd_faculties = SmallContent(phd_heading, None, phd_desc, None)
         phd_faculties.create_docx()
 
-        document.save('/JaiShah/College/Sem 5/Minor Project/Files/newsletter/Newsletter.docx')
+        document.save('Newsletter.docx')
+
+
+
         all_data = admv.get_data()
         # download_doc(request, '/Newsletter.docx')
         return render(request, 'admin-panel.html', {'all_data' : all_data})
     else:
         return render(request, 'index.html')
 
-# def download_doc(request, path):
-#     from django.views.static import serve
-#     filepath = path
-#     return serve(request, os.path.basename(filepath), os.path.dirname(filepath))
