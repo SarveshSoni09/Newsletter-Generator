@@ -19,6 +19,7 @@ from faculty_panel.models import *
 from newsletter.settings import BASE_DIR
 from newsletter.views import *
 
+
 # Red Shade: #A93639
 # font_color = RGBColor(0xA9, 0x36, 0x39)
 # Blue Shade: #005BAA
@@ -26,8 +27,9 @@ from newsletter.views import *
 # Purple Shade: #7864A2
 # font_color = RGBColor(0x78, 0x64, 0xA2)
 i=1
+
 def newsletter(request):
-    if request.method == "GET":
+    if request.method == "GET" and request.user.is_authenticated:
         def para_format(p, lin, rin, spb, spa):
             p.paragraph_format.left_indent = Inches(lin)
             p.paragraph_format.right_indent = Inches(rin)

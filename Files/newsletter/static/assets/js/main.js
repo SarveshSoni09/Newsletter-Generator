@@ -275,6 +275,3 @@ function sendArray(){
   document.getElementById('array').setAttribute('value',idNums);
 }
 
-reset(){
-  alert("Are you sure ?")
-}
