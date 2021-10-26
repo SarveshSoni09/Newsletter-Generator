@@ -504,6 +504,8 @@ def newsletter(request):
         phd_faculties.create_docx()
 
         document.save('Newsletter.docx')
+        
+        
         if 'word' in request.GET:
             pdf = False
             response = download_file(request, pdf)
@@ -513,6 +515,21 @@ def newsletter(request):
             convert(request)
             response = download_file(request, pdf)
             return response
+
+        if 'reset' in request.GET:
+            Highlights.objects.all().delete()
+            Milestones.objects.all().delete()
+            Activities.objects.all().delete()
+            Placements.objects.all().delete()
+            Results.objects.all().delete()
+            Students.objects.all().delete()
+            Events.objects.all().delete()
+            Projects.objects.all().delete()
+            Phd.objects.all().delete()
+            auth.logout(request)
+            return redirect('/')
+
+
         all_data = admv.get_data()
         # download_doc(request, '/Newsletter.docx')
         return render(request, 'admin-panel.html', {'all_data' : all_data})
