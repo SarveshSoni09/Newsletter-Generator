@@ -256,9 +256,13 @@ def newsletter(request):
                     paragraph = document.add_paragraph()
                     para_format(paragraph, -0.3333, -0.3333, 4, 0)
                     if self.title:
+                        run  = paragraph.add_run()
+                        run.add_picture('newsletter/Static/ScriptStatic/bullet_red.png', width=Cm(0.2), height=Cm(0.2))
                         run = paragraph.add_run(self.title[i] + ': ')
-                    run  = paragraph.add_run()
-                    run.add_picture('newsletter/Static/ScriptStatic/bullet_red.png', width=Cm(0.2), height=Cm(0.2))
+                        red_head.apply_style(run)
+                    else:
+                        run  = paragraph.add_run()
+                        run.add_picture('newsletter/Static/ScriptStatic/bullet_red.png', width=Cm(0.2), height=Cm(0.2))
                     run = paragraph.add_run("   " + self.desc[i])
                     # if self.desc[i]:
                     #     red_head.apply_style(run)
