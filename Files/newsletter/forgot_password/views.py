@@ -61,7 +61,7 @@ def reset_pass(request):
             user = User.objects.get(username=userid)
             user.set_password(password)
             user.save()
-            message = "Password Reset Successfull, please return to login"
+            message = "Password Reset Successful, please return to login"
         else: 
             message = "Invalid OTP"
             print(otp)

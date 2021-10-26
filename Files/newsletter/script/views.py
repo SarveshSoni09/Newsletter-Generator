@@ -260,12 +260,15 @@ def newsletter(request):
                     if self.title:
                         run  = paragraph.add_run()
                         run.add_picture('newsletter/Static/ScriptStatic/bullet_red.png', width=Cm(0.2), height=Cm(0.2))
-                        run = paragraph.add_run(self.title[i] + ': ')
+                        if self.title[i]:
+                            run = paragraph.add_run('  '+self.title[i] + ': ')
+                        else:
+                            run = paragraph.add_run('  ')
                         red_head.apply_style(run)
                     else:
                         run  = paragraph.add_run()
                         run.add_picture('newsletter/Static/ScriptStatic/bullet_red.png', width=Cm(0.2), height=Cm(0.2))
-                    run = paragraph.add_run("   " + self.desc[i])
+                    run = paragraph.add_run(self.desc[i])
                     # if self.desc[i]:
                     #     red_head.apply_style(run)
                     #     run = paragraph.add_run(": " + self.desc[i])
@@ -506,6 +509,8 @@ def newsletter(request):
         phd_faculties.create_docx()
 
         document.save('Newsletter.docx')
+        global i
+        i=1
         
         
         if 'word' in request.GET:
