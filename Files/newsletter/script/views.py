@@ -474,7 +474,8 @@ def newsletter(request):
 
 
         head_of_newsletter(h1, h2, h3, h4)
-        # group_pic("group_pic.png")
+        # group_pic = Header.objects.latest('id')
+        group_pic(getattr(header, 'department_image'))
         static_content(abt_department, vision, missions, peos)
 
         highlights = SmallContent(hlts_heading, hlts_faculty, hlts_content, hlts_pics)
@@ -488,6 +489,7 @@ def newsletter(request):
 
 
         table_pics = []
+        
         table_pics.append(chart_gen(placement_title, company_name, no_of_recruits, placement_x, placement_y))
         table_pics.append(chart_gen(results_title, student_year, students_pass, results_x, results_y))
 
