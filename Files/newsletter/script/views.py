@@ -559,16 +559,20 @@ def download_file(request, pdf):
     return serve(request, os.path.basename(filepath), os.path.dirname(filepath))
 
 def convert(request):
-    import comtypes.client
-    import sys
+    # import comtypes.client
+    # import sys
 
-    wdFormatPDF = 17
+    # wdFormatPDF = 17
 
-    in_file = os.path.join(BASE_DIR, 'Newsletter.docx')
-    out_file = os.path.join(BASE_DIR, 'Newsletter.pdf')
+    # in_file = os.path.join(BASE_DIR, 'Newsletter.docx')
+    # out_file = os.path.join(BASE_DIR, 'Newsletter.pdf')
 
-    word = comtypes.client.CreateObject('Word.Application')
-    doc = word.Documents.Open(in_file)
-    doc.SaveAs(out_file, FileFormat=wdFormatPDF)
-    doc.Close()
-    word.Quit()
+    # word = comtypes.client.CreateObject('Word.Application')
+    # doc = word.Documents.Open(in_file)
+    # doc.SaveAs(out_file, FileFormat=wdFormatPDF)
+    # doc.Close()
+    # word.Quit()
+    from docx2pdf import convert
+    convert(os.path.join(BASE_DIR, 'Newsletter.docx'))
+    # convert("Newsletter.docx", "Newsletter.pdf")
+    # convert(BASE_DIR, 'Newsletter.pdf')
