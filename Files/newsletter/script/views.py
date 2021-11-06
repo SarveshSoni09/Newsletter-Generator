@@ -20,6 +20,7 @@ from newsletter.settings import BASE_DIR
 from newsletter.views import *
 
 
+
 # Red Shade: #A93639
 # font_color = RGBColor(0xA9, 0x36, 0x39)
 # Blue Shade: #005BAA
@@ -559,20 +560,4 @@ def download_file(request, pdf):
     return serve(request, os.path.basename(filepath), os.path.dirname(filepath))
 
 def convert(request):
-    # import comtypes.client
-    # import sys
-
-    # wdFormatPDF = 17
-
-    # in_file = os.path.join(BASE_DIR, 'Newsletter.docx')
-    # out_file = os.path.join(BASE_DIR, 'Newsletter.pdf')
-
-    # word = comtypes.client.CreateObject('Word.Application')
-    # doc = word.Documents.Open(in_file)
-    # doc.SaveAs(out_file, FileFormat=wdFormatPDF)
-    # doc.Close()
-    # word.Quit()
-    from docx2pdf import convert
-    convert(os.path.join(BASE_DIR, 'Newsletter.docx'))
-    # convert("Newsletter.docx", "Newsletter.pdf")
-    # convert(BASE_DIR, 'Newsletter.pdf')
+    pass
