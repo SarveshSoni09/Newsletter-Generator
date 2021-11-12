@@ -16,7 +16,7 @@ from docx.enum.table import WD_ALIGN_VERTICAL, WD_CELL_VERTICAL_ALIGNMENT
 from docx.enum.text import WD_PARAGRAPH_ALIGNMENT
 from docx.shared import Cm, Inches, Pt, RGBColor
 from faculty_panel.models import *
-from newsletter.settings import BASE_DIR
+from newsletter.settings import BASE_DIR, API_KEY
 from newsletter.views import *
 
 
@@ -150,7 +150,7 @@ def newsletter(request):
                 red_content.apply_style(run)
                 run.italic = True
 
-            document.add_page_break()
+            # document.add_page_break()
 
 
         class FontStyle:
@@ -562,7 +562,7 @@ def download_file(request, pdf):
 
 def convert(request):
     import convertapi
-    convertapi.api_secret = 'JBDgv80v8mMGDKu1'
+    convertapi.api_secret = API_KEY
     result = convertapi.convert('pdf', { 'File': os.path.join(BASE_DIR, 'Newsletter.docx') })
     result.file.save(os.path.join(BASE_DIR, 'Newsletter.pdf'))
 
