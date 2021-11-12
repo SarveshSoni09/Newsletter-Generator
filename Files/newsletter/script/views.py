@@ -565,3 +565,5 @@ def convert(request):
     convertapi.api_secret = 'JBDgv80v8mMGDKu1'
     result = convertapi.convert('pdf', { 'File': os.path.join(BASE_DIR, 'Newsletter.docx') })
     result.file.save(os.path.join(BASE_DIR, 'Newsletter.pdf'))
+
+plt.switch_backend('agg') # I don't know how but this one line of code stops a huge runtime error so DO NOT REMOVE IT.
