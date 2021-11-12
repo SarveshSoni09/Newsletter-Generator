@@ -21,6 +21,7 @@ from newsletter.views import *
 
 
 
+
 # Red Shade: #A93639
 # font_color = RGBColor(0xA9, 0x36, 0x39)
 # Blue Shade: #005BAA
@@ -560,4 +561,7 @@ def download_file(request, pdf):
     return serve(request, os.path.basename(filepath), os.path.dirname(filepath))
 
 def convert(request):
-    pass
+    import convertapi
+    convertapi.api_secret = 'JBDgv80v8mMGDKu1'
+    result = convertapi.convert('pdf', { 'File': os.path.join(BASE_DIR, 'Newsletter.docx') })
+    result.file.save(os.path.join(BASE_DIR, 'Newsletter.pdf'))
